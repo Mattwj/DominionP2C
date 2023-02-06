@@ -1,0 +1,2 @@
+# Dominion API
+This is an api set up to hold all game info for Web UI based game of Dominion.  This is meant to have players have a local instance of a web page send requests and both take turns by sending pings to the server to see if its their turn yet.

@@ -8,3 +8,21 @@ header {
     text-align: center;
 
 }
+
+.board{
+    margin: 0 auto;
+}
+
+.mainCards, .points{
+    width: 218px;
+    height: 325px
+    
+}
+
+.mainCards {
+    border: 2px solid red;
+}
+
+.points {
+    border: 2px solid green;
+}

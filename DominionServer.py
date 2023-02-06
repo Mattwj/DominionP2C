@@ -1,16 +1,16 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, send_file
 from random import choice
 import time
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='/home/pi/Dominion/')
 
+@app.route("/", methods=['GET'])
+def getWebpage():
+    return render_template('Dominion.html')
 
-
-
-
-
-
-
+@app.route("/Image/<cardName>", methods=['GET'])
+def getImage(cardName):
+    return send_file('./Images/Estate.jpg', mimetype='image/jpg')
 
 @app.route("/Test", methods=['GET'])
 def getInventory():

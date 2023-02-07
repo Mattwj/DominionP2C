@@ -9,8 +9,13 @@ def getWebpage():
     return render_template('Dominion.html')
 
 @app.route("/Image/<cardName>", methods=['GET'])
-def getImage(cardName):
-    return send_file('./Images/Estate.jpg', mimetype='image/jpg')
+def getImage(cardName = ""):
+
+    return send_file('Images/'+cardName+'.jpg', mimetype='image/jpg')
+
+@app.route("/EstateImage", methods=['GET'])
+def getEstateImage():
+    return send_file('Images/Estate.jpg', mimetype='image/jpg')
 
 @app.route("/Test", methods=['GET'])
 def getInventory():

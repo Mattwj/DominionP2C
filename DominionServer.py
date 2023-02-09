@@ -6,10 +6,9 @@ app = Flask(__name__, template_folder='/home/pi/Dominion/')
 
 @app.route("/GitPull", methods=['GET'])
 def PerformGitPull():
-    shellscript = subprocess.Popen(["shellscript.sh"], stdin=subprocess.PIPE)
-    shellscript.stdin.write("git pull")
+    shellscript = subprocess.Popen(["/home/pi/Dominion/gitPull.sh"], stdin=subprocess.PIPE)
     shellscript.stdin.close()
-    return perpareResponse("done")
+    return prepareResponse("done")
 
 @app.route("/", methods=['GET'])
 def getWebpage():

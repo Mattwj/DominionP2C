@@ -58,7 +58,7 @@ class Player:
     def tryUseCardAsAction(self, cardName):
         if cardName not in self.hand:
             return False
-        if self.actions > 1:
+        if self.actions > 0:
             actionResult = activateCard(cardName, self)
             if actionResult == True:
                 self.actions = self.actions - 1

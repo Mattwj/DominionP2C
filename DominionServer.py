@@ -26,17 +26,6 @@ def GetPlayer(name = ""):
     print(board.getPlayer(name).out())
     return prepareResponse(board.getPlayer(name).out())
 
-
-def AddPlayerIn(name = ""):
-    resp = prepareResponse(board.addPlayer(name))
-    return resp
-
-def GetPlayerIn(name = ""):
-    print(board.getPlayer(name))
-    print(board.getPlayer(name).out())
-    return prepareResponse(board.getPlayer(name).out())
-
-
 @app.route("/UseCard/<playerName>/<cardName>", methods=['POST'])
 def UseCard(cardName = "", playerName = ""):
     player = board.getPlayer(playerName)
@@ -51,6 +40,4 @@ def prepareResponse(value):
 
 if __name__ == '__main__':
     board = Board()
-    AddPlayerIn("Matt")
-    print(GetPlayerIn("Matt"))
     app.run(debug=True, port=80, host='0.0.0.0')

@@ -10,6 +10,8 @@ def PerformGitPull():
     shellscript.stdin.close()
     return prepareResponse("done")
 
+#dummy git pull test
+
 @app.route("/", methods=['GET'])
 def getWebpage():
     return render_template('Dominion.html')

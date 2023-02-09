@@ -1,5 +1,6 @@
 #pylint:disable=W0612
 import random
+from CardEffectsLogic import activateCard
 
 class Player:
     name=''
@@ -63,6 +64,13 @@ class Player:
                 self.actions = self.actions - 1
                 return True
         return False
+    
+    def tryUseCoinCard(self, cardName):
+        if cardName not in self.hand:
+            return False
+        actionResult = activateCard(cardName, self)
+        return True
+    
 
 
     def AddCardToDeck(self, cardName):

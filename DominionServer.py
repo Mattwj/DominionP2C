@@ -10,8 +10,6 @@ def PerformGitPull():
     shellscript.stdin.close()
     return prepareResponse("done")
 
-#dummy git pull test
-
 @app.route("/", methods=['GET'])
 def getWebpage():
     return render_template('Dominion.html')
@@ -45,8 +43,6 @@ def prepareResponse(value):
     response = jsonify({'data': str(value)})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
-
-#dummy update test
 
 if __name__ == '__main__':
     board = Board()

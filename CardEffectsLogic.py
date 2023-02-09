@@ -25,6 +25,8 @@ def activateCard(cardName, player):
         
     if name == "Moat":
         player.DrawCards(2)
+    
+    return True
 
 def isCoinCard(cardName):
     return cardName in ["Copper", "Silver", "Gold"]

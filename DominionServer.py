@@ -36,7 +36,7 @@ def GetPlayer(name = ""):
 @app.route("/UseCard/<playerName>/<cardName>", methods=['POST'])
 def UseCard(cardName = "", playerName = ""):
     player = board.getPlayer(playerName)
-    player.activateCard(cardName, player)
+    player.tryUseCardAsAction(cardName, player)
     return prepareResponse(player.out())
 
 def prepareResponse(value):

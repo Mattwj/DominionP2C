@@ -1,6 +1,6 @@
 #pylint:disable=W0612
 import random
-from CardEffectsLogic import activateCard
+from CardEffectsLogic import activateCard, isCoinCard, useBuyPhaseEffect
 
 class Player:
     name=''
@@ -11,6 +11,7 @@ class Player:
     hand=[]
     discard=[]
     usedCards=[]
+    buyPhaseEffects = []
 
 
     def newTurn(self):
@@ -76,19 +77,28 @@ class Player:
         self.usedCards.push(cardName)
         return True
     
-
+    def calculateCoins(self):
+        for c in self.hand:
+            if not isCoinCard(c) :
+                self.usedCards.push(c)
+                self.hand.remove(c)
+        for effect in self.buyPhaseEffects:
+            useBuyPhaseEffect(effect, self)
+        for cc in self.hand :
+            activateCard(cc, self)
 
     def AddCardToDeck(self, cardName):
         self.deck.append(cardName)
 
-
     def AddCardToHand(self, cardName):
         self.hand.append(cardName)
 
-
     def AddCardToDiscard(self, cardName):
         self.discard.append(cardName)
-
+        
+    def AddBuyPhaseEffect(self, cardName):
+        self.buyPhaseEffects.append(cardName)
+    
     def IncreaseActions(self, num):
         self.actions = self.actions + num
 

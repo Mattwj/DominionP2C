@@ -25,8 +25,28 @@ def activateCard(cardName, player):
         
     if name == "Moat":
         player.DrawCards(2)
+        
+    if name == "Festival":
+        player.IncreaseActions(2)
+        player.IncreaseBuys(1)
+        player.Coins(2)
+        
+    if name == "Laboratory":
+        player.DrawCards(2)
+        player.IncreaseActions(1)
+        
+    if name == "Merchant":
+        player.DrawCards(1)
+        player.IncreaseActions(1)
+        player.AddBuyPhaseEffect(cardName)
     
     return True
+
+def useBuyPhaseEffect(cardName, player):
+    name = str(cardName)
+    if name == "Merchant":
+        if "Silver" in player.hand:
+            player.IncreaseCoins(1)
 
 def isCoinCard(cardName):
     return cardName in ["Copper", "Silver", "Gold"]

@@ -1,4 +1,3 @@
-from Player import Player
 
 def activateCard(cardName, player):
     match str(cardName) :

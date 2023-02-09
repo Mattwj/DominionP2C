@@ -10,6 +10,7 @@ class Player:
     deck=[]
     hand=[]
     discard=[]
+    usedCards=[]
 
 
     def newTurn(self):
@@ -62,6 +63,8 @@ class Player:
             actionResult = activateCard(cardName, self)
             if actionResult == True:
                 self.actions = self.actions - 1
+                self.hand.remove(cardName)
+                self.usedCards.push(cardName)
                 return True
         return False
     
@@ -69,6 +72,8 @@ class Player:
         if cardName not in self.hand:
             return False
         actionResult = activateCard(cardName, self)
+        self.hand.remove(cardName)
+        self.usedCards.push(cardName)
         return True
     
 

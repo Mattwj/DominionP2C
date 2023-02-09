@@ -1,7 +1,15 @@
 from flask import Flask, jsonify, render_template, send_file
 from Board import Board
+import subprocess
 
 app = Flask(__name__, template_folder='/home/pi/Dominion/')
+
+@app.route("/GitPull", methods=['GET'])
+def PerformGitPull():
+    shellscript = subprocess.Popen(["shellscript.sh"], stdin=subprocess.PIPE)
+    shellscript.stdin.write("git pull")
+    shellscript.stdin.close()
+    return perpareResponse("done")
 
 @app.route("/", methods=['GET'])
 def getWebpage():

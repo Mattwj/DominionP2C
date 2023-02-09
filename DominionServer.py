@@ -37,6 +37,7 @@ def prepareResponse(value):
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+#dummy update test
 
 if __name__ == '__main__':
     board = Board()

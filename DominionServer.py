@@ -55,7 +55,8 @@ def StartGame():
     
 @app.route("/EndTurn/<playerName>", methods=["POST"])
 def EndTurn(playerName = ""):
-    return prepareResponse(board.passTurn(playerName))
+    player = board.getPlayer(playerName)
+    return prepareResponse(board.passTurn(player))
 
 @app.route("/ResetGame", methods=["POST"])
 def ResetGame():

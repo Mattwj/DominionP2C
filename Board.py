@@ -10,18 +10,18 @@ class Board:
     playerOrder = []
     
     def __init__(self):
-        players = []
-        cards = {}
-        gamestarted = False
-        playerOrder = []
-        usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
+        self.players = []
+        self.cards = {}
+        self.gamestarted = False
+        self.playerOrder = []
+        self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
 
     def fullReset(self):
-        players = []
-        cards = {}
-        gamestarted = False
-        playerOrder = []
-        usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
+        self.players = []
+        self.cards = {}
+        self.gamestarted = False
+        self.playerOrder = []
+        self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
 
     def addPlayer(self, name):
         found = False

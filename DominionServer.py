@@ -47,7 +47,7 @@ def UseCard(cardName = "", playerName = ""):
 def MoveToBuyPhase(playerName = ""):
     player = board.getPlayer(playerName)
     player.calculateCoins()
-    prepareResponse(player.out())
+    return prepareResponse(player.out())
 
 @app.route("/StartGame", methods=["POST"])
 def StartGame():

@@ -65,6 +65,7 @@ def EndTurn(playerName = ""):
 @app.route("/ResetGame", methods=["POST"])
 def ResetGame():
     board = Board()
+    board.fullReset()
     return prepareResponse("true")
 
 @app.route("/BuyCard/<playerName>/<cardName>", methods=["POST"])

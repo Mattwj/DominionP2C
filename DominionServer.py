@@ -64,6 +64,7 @@ def EndTurn(playerName = ""):
 
 @app.route("/ResetGame", methods=["POST"])
 def ResetGame():
+    global board
     board = Board()
     board.fullReset()
     return prepareResponse("true")

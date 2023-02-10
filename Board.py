@@ -48,7 +48,7 @@ class Board:
         if cardName == "Witch" :
             if self.cards["Curse"] > 0:
                 for p in self.players:
-                    if self.cards["Curse"] < len(self.players - 1):
+                    if self.cards["Curse"] > 0:
                         if p.name != player.name :
                             if "Moat" not in p.hand :
                                 p.gainCard("Curse")

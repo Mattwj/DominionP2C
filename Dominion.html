@@ -33,39 +33,58 @@
     <body>
         <header>
             <h1>Dominion</h1>
-            <h2>Player Name: <span id="playerName"></span></h2>
+            <h2>Player Name: <span id="playerName"><input name="playerName" class="playerName" id="playerName" type="text" /></span></h2>
         </header>
         <div class="box">
         <div class="board">
+
             <div class="row">
+                
                 <div class="mainCards col-xs-1"></div>
                 <div class="mainCards col-xs-1"></div>
                 <div class="mainCards col-xs-1"></div>
                 <div class="mainCards col-xs-1"></div>
-                <div class="mainCards col-xs-1"></div>
-                <div class="mainCards col-xs-1"></div>
-                <div class="col-xs-1 space"></div>
+                <div class="mainCards col-xs-1"></div>                
                 <div class="col-xs-1 points"><img src="http://192.168.0.230/Image/Province"></div>
             </div>
+    
             <div class="row">
                 <div class="mainCards col-xs-1"></div>
                 <div class="mainCards col-xs-1"></div>
                 <div class="mainCards col-xs-1"></div>
                 <div class="mainCards col-xs-1"></div>
                 <div class="mainCards col-xs-1"></div>
-                <div class="mainCards col-xs-1"></div>
-                <div class="col-xs-1 space"></div>
                 <div class="col-xs-1 points"><img src="http://192.168.0.230/Image/Duchy"></div>
             </div>
             <div class="row">
+               
                 <div class="money col-xs-1"><img src="http://192.168.0.230/Image/Copper"></div>
                 <div class="money col-xs-1"><img src="http://192.168.0.230/Image/Silver"></div>
                 <div class="money col-xs-1"><img src="http://192.168.0.230/Image/Gold"></div>
-                <div class="trash col-xs-3"><img src="http://192.168.0.230/Image/Trash" style="width:620px;height: 316px;"></div>
+                <!-- <div class="trash col-xs-3"><img src="http://192.168.0.230/Image/Trash" ></div> -->
+                <div class="space col-xs-1"></div>
+            
                 <div class="curse col-xs-1"><img src="http://192.168.0.230/Image/Curse"></div>
+                
                 <div class="col-xs-1 points"><img src="http://192.168.0.230/Image/Estate"></div>
             </div>
         </div>
+        </div>
+
+        <div class="box">
+            <div class="row">
+                <div class="hand col-xs-1"></div>
+                <div class="hand col-xs-1"></div>
+                <div class="hand col-xs-1"></div>
+                <div class="hand col-xs-1"></div>
+                <div class="hand col-xs-1"></div>
+                
+            </div>
+            
+        </div>
+        <div class="box">
+            <button class="btn">Move to Buy</button>
+            <button class="btn">End Turn</button>
         </div>
 
     </body>

@@ -30,9 +30,10 @@ def AddPlayer(name = ""):
 
 @app.route("/GetPlayer/<name>", methods=['GET'])
 def GetPlayer(name = ""):
-    print(board.getPlayer(name))
-    print(board.getPlayer(name).out())
-    return prepareResponse(board.getPlayer(name).out())
+    player = board.getPlayer(name)
+    if player is not None:
+        return prepareResponse(player.out())
+    return prepareResponse(player)
 
 @app.route("/UseCard/<playerName>/<cardName>", methods=['POST'])
 def UseCard(cardName = "", playerName = ""):

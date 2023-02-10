@@ -44,7 +44,6 @@ class Player:
 
     def newHand(self):
         #add a card here to test
-        self.hand.append("Smithy")
         for i in range(0,5):
             self.drawCard()
 

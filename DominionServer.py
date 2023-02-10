@@ -49,6 +49,10 @@ def MoveToBuyPhase(playerName = ""):
     player.calculateCoins()
     return prepareResponse(player.out())
 
+@app.route("/GetCards", methods=["GET"])
+def GetCards():
+    return prepareResponse(board.getCards())
+
 @app.route("/StartGame", methods=["POST"])
 def StartGame():
     return prepareResponse(board.startGame())

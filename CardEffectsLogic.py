@@ -5,7 +5,7 @@ def activateCard(cardName, player):
         player.IncreaseCoins(1)
         return False
         
-    if name == "Silver":
+    if name == "Silver" or name=="Harem":
         player.IncreaseCoins(2)
         return False
         
@@ -62,4 +62,4 @@ def useBuyPhaseEffect(cardName, player):
             player.IncreaseCoins(1)
 
 def isCoinCard(cardName):
-    return cardName in ["Copper", "Silver", "Gold"]
+    return cardName in ["Copper", "Silver", "Gold", "Harem"]

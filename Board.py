@@ -11,7 +11,7 @@ class Board:
     
     def __init__(self):
         self.players= []
-        usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room"]
+        usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
 
     def addPlayer(self, name):
         found = False
@@ -85,3 +85,11 @@ class Board:
                     return self.getPlayer(name)  
                 if name == player.name:
                     nextIsGood = True
+    
+    def getCards(self):
+        resp = '''"cards":['''
+        for c in self.cards:
+            resp = resp + '''"''' + c + '''",'''
+        resp = resp.rstrip(',')
+        resp = resp + ']}'
+        return resp

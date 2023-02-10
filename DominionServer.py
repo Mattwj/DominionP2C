@@ -67,6 +67,12 @@ def ResetGame():
     board = Board()
     return prepareResponse("true")
 
+@app.route("/BuyCard/<playerName>/<cardName>", methods=["POST"])
+def BuyCard(playerName = "", cardName = ""):
+    player = board.getPlayer(playerName)
+    player.tryBuyCard(cardName)
+    return prepareResponse(player.out())
+
 def prepareResponse(value):
     response = jsonify({'data': str(value)})
     response.headers.add('Access-Control-Allow-Origin', '*')

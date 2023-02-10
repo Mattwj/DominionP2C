@@ -1,3 +1,4 @@
+from CardEffectsLogic import isAttackCard
 from flask import Flask, jsonify, render_template, send_file
 from Board import Board
 import subprocess
@@ -37,7 +38,15 @@ def GetPlayer(name = ""):
 def UseCard(cardName = "", playerName = ""):
     player = board.getPlayer(playerName)
     player.tryUseCardAsAction(cardName)
+    if isAttackCard(cardName) == True :
+        board.performAttackOnOthers(player, cardName)
     return prepareResponse(player.out())
+
+@app.route("/StartGame", methods=["POST"])
+def StartGame():
+    return prepareResponse(board.startGame())
+    
+
 
 def prepareResponse(value):
     response = jsonify({'data': str(value)})

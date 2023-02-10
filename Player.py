@@ -40,6 +40,7 @@ class Player:
         return resp
 
     def newHand(self):
+        #add a card here to test
         self.hand.append("Smithy")
         for i in range(0,5):
             self.drawCard()
@@ -55,8 +56,11 @@ class Player:
         cardIndex = random.choice(range(0, len(self.deck)))
         self.hand.append(self.deck[cardIndex])
         del self.deck[cardIndex]
+        
+    def gainCard(self, cardName):
+        self.discard.push(cardName)
 
-
+    #need a different method for attacks
     def tryUseCardAsAction(self, cardName):
         if cardName not in self.hand:
             return False

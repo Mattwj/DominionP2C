@@ -39,8 +39,14 @@ def activateCard(cardName, player):
         player.DrawCards(1)
         player.IncreaseActions(1)
         player.AddBuyPhaseEffect(cardName)
+        
+    if name == "Witch":
+        player.DrawCards(3)
     
     return True
+
+def isAttackCard(cardName) :
+    return cardName in ["Witch"]
 
 def useBuyPhaseEffect(cardName, player):
     name = str(cardName)

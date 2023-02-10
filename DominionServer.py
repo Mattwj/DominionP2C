@@ -51,6 +51,11 @@ def StartGame():
 def EndTurn(playerName = ""):
     return prepareResponse(board.passTurn(playerName))
 
+@app.route("/ResetGame", methods=["POST"])
+def ResetGame():
+    board = Board()
+    return prepareResponse("true")
+
 def prepareResponse(value):
     response = jsonify({'data': str(value)})
     response.headers.add('Access-Control-Allow-Origin', '*')

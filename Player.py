@@ -18,6 +18,8 @@ class Player:
         self.actions=1
         self.buys=1
         self.coins=0
+        for c in self.hand:
+            self.discard.append(c)
         for c in self.usedCards:
             self.discard.append(c)
         self.usedCards = []     
@@ -43,7 +45,8 @@ class Player:
         return resp
 
     def newHand(self):
-        #add a card here to test
+        for c in self.hand:
+            self.discard.append(c)
         for i in range(0,5):
             self.drawCard()
 

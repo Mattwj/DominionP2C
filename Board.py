@@ -18,7 +18,8 @@ class Board:
 
     def fullReset(self):
         print("BEFORE")
-        print(self.players)
+        for p in self.players:
+            print(p.out())
         print(self.cards)
         print(self.gamestarted)
         print(self.playerOrder)
@@ -30,7 +31,8 @@ class Board:
         self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
         
         print("AFTER")
-        print(self.players)
+        for p in self.players:
+            print(p.out())
         print(self.cards)
         print(self.gamestarted)
         print(self.playerOrder)

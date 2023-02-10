@@ -18,6 +18,10 @@ class Player:
         self.actions=1
         self.buys=1
         self.coins=0
+        for c in self.usedCards:
+            self.discard.append(c)
+        self.usedCards = []     
+        self.buyPhaseEffects = []   
         self.newHand()
 
     def __init__(self, name):

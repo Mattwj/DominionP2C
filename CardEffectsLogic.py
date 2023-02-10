@@ -45,6 +45,10 @@ def activateCard(cardName, player):
         
     if name == "Witch":
         player.DrawCards(3)
+        
+    if name == "Council Room" :
+        player.DrawCards(4)
+        player.InceaseBuys(1)
     
     return True
 

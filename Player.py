@@ -20,7 +20,6 @@ class Player:
         self.coins=0
         self.newHand()
 
-
     def __init__(self, name):
         self.name=name
         self.actions=1
@@ -53,6 +52,7 @@ class Player:
             for c in self.discard:
                 self.deck.append(c)
             self.discard =[]
+            random.shuffle(self.deck)
         cardIndex = random.choice(range(0, len(self.deck)))
         self.hand.append(self.deck[cardIndex])
         del self.deck[cardIndex]

@@ -38,15 +38,17 @@ def GetPlayer(name = ""):
 def UseCard(cardName = "", playerName = ""):
     player = board.getPlayer(playerName)
     player.tryUseCardAsAction(cardName)
-    if isAttackCard(cardName) == True :
-        board.performAttackOnOthers(player, cardName)
+    board.performPotentialAttackOnOthers(player, cardName)
+    board.performPotentialEffectOnOthers(player,cardName)
     return prepareResponse(player.out())
 
 @app.route("/StartGame", methods=["POST"])
 def StartGame():
     return prepareResponse(board.startGame())
     
-
+@app.route("/EndTurn/<playerName>", methods=["POST"])
+def EndTurn(playerName = ""):
+    return prepareResponse(board.passTurn(playerName))
 
 def prepareResponse(value):
     response = jsonify({'data': str(value)})

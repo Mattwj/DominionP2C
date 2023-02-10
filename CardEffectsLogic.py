@@ -3,12 +3,15 @@ def activateCard(cardName, player):
     name = str(cardName)
     if name == "Copper":
         player.IncreaseCoins(1)
+        return False
         
     if name == "Silver":
         player.IncreaseCoins(2)
+        return False
         
     if name == "Gold":
         player.IncreaseCoins(3)
+        return False
         
     if name == "Smithy":
         player.DrawCards(3)

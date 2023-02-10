@@ -1,6 +1,7 @@
 body{
     width: 100%;
     height: 100vh;
+    background-image: url(http://192.168.0.230/Image/Background);
 }
 
 header {
@@ -9,20 +10,44 @@ header {
 
 }
 
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:auto;
+    
+}
 .board{
-    margin: 0 auto;
+    margin: 20px;
+
 }
 
-.mainCards, .points{
-    width: 218px;
-    height: 325px
-    
+.mainCards.col-xs-1, .space.col-xs-1, .points.col-xs-1, .money.col-xs-1, .curse.col-xs-1{
+    width: 208px;
+    height: 324px;
+    padding: 0;
+}
+
+.trash.col-xs-3{
+    width: 624px ;
+    height: 324px;
+    padding: 0;
 }
 
 .mainCards {
-    border: 2px solid red;
+    border: 4px solid #a6abae;
 }
 
 .points {
-    border: 2px solid green;
+    border: 4px solid #96da67;
 }
+
+.money{
+    border: 4px solid #f3cf5c;
+}
+
+.curse, .trash {
+    border: 4px solid #9d5fb1;
+}
+
+

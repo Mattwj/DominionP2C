@@ -17,11 +17,23 @@ class Board:
         self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
 
     def fullReset(self):
+        print("BEFORE")
+        print(self.players)
+        print(self.cards)
+        print(self.gamestarted)
+        print(self.playerOrder)
+        
         self.players = []
         self.cards = {}
         self.gamestarted = False
         self.playerOrder = []
         self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
+        
+        print("AFTER")
+        print(self.players)
+        print(self.cards)
+        print(self.gamestarted)
+        print(self.playerOrder)
 
     def addPlayer(self, name):
         found = False

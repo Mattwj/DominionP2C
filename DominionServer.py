@@ -43,7 +43,7 @@ def UseCard(cardName = "", playerName = ""):
     board.performPotentialEffectOnOthers(player,cardName)
     return prepareResponse(player.out())
 
-@app.route("/BuyPhase", methods=["POST"])
+@app.route("/BuyPhase/<playerName>", methods=["POST"])
 def MoveToBuyPhase(playerName = ""):
     player = board.getPlayer(playerName)
     player.calculateCoins()

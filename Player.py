@@ -34,7 +34,7 @@ class Player:
 
     #json version of the object
     def out(self):
-        resp = f"{'{'}'name':'{self.name}','actions':'{self.actions}','buys':'{self.buys}','coins':'{self.coins}', 'hand':["
+        resp = f'''{'{'}"name":"{self.name}","actions":"{self.actions}","buys":"{self.buys}","coins":"{self.coins}", "hand":['''
         for c in self.hand:
             resp = resp + "'" + c + "',"
         resp = resp.rstrip(',')

@@ -22,7 +22,7 @@ header {
 
 }
 
-.mainCards.col-xs-1, .space.col-xs-1, .points.col-xs-1, .money.col-xs-1, .curse.col-xs-1{
+.mainCards.col-xs-1, .space.col-xs-1, .points.col-xs-1, .money.col-xs-1, .curse.col-xs-1, .hand.col-xs-1{
     width: 208px;
     height: 324px;
     padding: 0;
@@ -34,7 +34,7 @@ header {
     padding: 0;
 }
 
-.mainCards {
+.mainCards, .hand {
     border: 4px solid #a6abae;
 }
 
@@ -50,4 +50,56 @@ header {
     border: 4px solid #9d5fb1;
 }
 
+.playerName {
+    background-color: rgba(0,0,0,0);
+    border: white;
+}
 
+.btn {
+    font-size: 17px;
+    background: transparent;
+    border: none;
+    padding: 1em 1.5em;
+    color: #ffedd3;
+    text-transform: uppercase;
+    position: relative;
+    transition: .5s ease;
+  }
+  
+  .btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #ffc506;
+    transition: .5s ease;
+  }
+  
+  .btn:hover {
+    color: #1e1e2b;
+    transition-delay: .5s;
+  }
+  
+  .btn:hover::before {
+    width: 100%;
+  }
+  
+  .btn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background-color: #ffc506;
+    transition: .4s ease;
+    z-index: -1;
+  }
+  
+  .btn:hover::after {
+    height: 100%;
+    transition-delay: 0.4s;
+    color: aliceblue;
+  }

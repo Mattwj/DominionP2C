@@ -62,7 +62,7 @@ class Player:
         del self.deck[cardIndex]
         
     def gainCard(self, cardName):
-        self.discard.push(cardName)
+        self.discard.append(cardName)
 
     #need a different method for attacks
     def tryUseCardAsAction(self, cardName):
@@ -73,7 +73,7 @@ class Player:
             if actionResult == True:
                 self.actions = self.actions - 1
                 self.hand.remove(cardName)
-                self.usedCards.push(cardName)
+                self.usedCards.append(cardName)
                 return True
         return False
     
@@ -82,13 +82,13 @@ class Player:
             return False
         actionResult = activateCard(cardName, self)
         self.hand.remove(cardName)
-        self.usedCards.push(cardName)
+        self.usedCards.append(cardName)
         return True
     
     def calculateCoins(self):
         for c in self.hand:
             if not isCoinCard(c) :
-                self.usedCards.push(c)
+                self.usedCards.append(c)
                 self.hand.remove(c)
         for effect in self.buyPhaseEffects:
             useBuyPhaseEffect(effect, self)

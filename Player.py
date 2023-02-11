@@ -1,6 +1,6 @@
 #pylint:disable=W0612
 import random
-from CardEffectsLogic import activateCard, isCoinCard, useBuyPhaseEffect
+from CardEffectsLogic import activateCard, getCardCost, isCoinCard, useBuyPhaseEffect
 
 class Player:
     name=''
@@ -18,10 +18,12 @@ class Player:
         self.actions=1
         self.buys=1
         self.coins=0
+        for c in self.hand:
+            self.discard.append(c)
         for c in self.usedCards:
             self.discard.append(c)
-        self.usedCards = []     
-        self.buyPhaseEffects = []   
+        self.usedCards.clear()   
+        self.buyPhaseEffects.clear()
         self.newHand()
 
     def __init__(self, name):
@@ -43,8 +45,9 @@ class Player:
         return resp
 
     def newHand(self):
-        #add a card here to test
-        self.hand.append("Smithy")
+        for c in self.hand:
+            self.discard.append(c)
+        self.hand.clear()
         for i in range(0,5):
             self.drawCard()
 
@@ -85,6 +88,12 @@ class Player:
         self.usedCards.append(cardName)
         return True
     
+    def tryBuyCard(self, cardName):
+        cost = getCardCost(cardName)
+        if self.coins >= cost:
+            self.DecreaseCoins(cost)
+            self.AddCardToDiscard(cardName)
+    
     def calculateCoins(self):
         for c in self.hand:
             if not isCoinCard(c) :
@@ -115,6 +124,9 @@ class Player:
 
     def IncreaseCoins(self, num):
         self.coins = self.coins + num
+        
+    def DecreaseCoins(self, num):
+        self.coins = self.coins - num
 
     def DrawCards(self, num):
         for i in range(0, int(num)):

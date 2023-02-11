@@ -10,8 +10,19 @@ class Board:
     playerOrder = []
     
     def __init__(self):
-        self.players= []
-        usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room"]
+        self.players = []
+        self.cards = {}
+        self.gamestarted = False
+        self.playerOrder = []
+        self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
+
+    def fullReset(self):
+        self.players.clear()
+        self.cards = {}
+        self.gamestarted = False
+        self.playerOrder.clear()
+        self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
+        
 
     def addPlayer(self, name):
         found = False
@@ -85,3 +96,11 @@ class Board:
                     return self.getPlayer(name)  
                 if name == player.name:
                     nextIsGood = True
+    
+    def getCards(self):
+        resp = '''"cards":['''
+        for c in self.cards:
+            resp = resp + '''"''' + c + '''",'''
+        resp = resp.rstrip(',')
+        resp = resp + ']}'
+        return resp

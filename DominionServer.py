@@ -49,6 +49,10 @@ def MoveToBuyPhase(playerName = ""):
     player.calculateCoins()
     return prepareResponse(player.out())
 
+@app.route("/GetCards", methods=["GET"])
+def GetCards():
+    return prepareResponse(board.getCards())
+
 @app.route("/StartGame", methods=["POST"])
 def StartGame():
     return prepareResponse(board.startGame())
@@ -60,8 +64,14 @@ def EndTurn(playerName = ""):
 
 @app.route("/ResetGame", methods=["POST"])
 def ResetGame():
-    board = Board()
+    board.fullReset()
     return prepareResponse("true")
+
+@app.route("/BuyCard/<playerName>/<cardName>", methods=["POST"])
+def BuyCard(playerName = "", cardName = ""):
+    player = board.getPlayer(playerName)
+    player.tryBuyCard(cardName)
+    return prepareResponse(player.out())
 
 def prepareResponse(value):
     response = jsonify({'data': str(value)})

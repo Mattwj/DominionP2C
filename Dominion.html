@@ -7,37 +7,16 @@
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
         crossorigin="anonymous"></script> 
+        <link href="https://fonts.cdnfonts.com/css/trajan-pro" rel="stylesheet">
         <script src="./Dominion.js">
         </script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-        <script>
-
-            function test(){
-                var response = null;
-                $.ajax({
-                    url:"http://192.168.0.230/GetPlayer/Matt",
-                    method:"GET",
-                    async: false,
-                    success:function(data){
-                        response = data;
-                        console.log(data);
-                    }
-                });
-                console.log(response);
-                console.log(response['data']);
-                console.log(JSON.parse(response['data']));
-                console.log(JSON.parse(response['data']).hand);
-            }
-            
-
-            test();
-        </script>
     </head>
 
     <body>
         <header>
             <h1>Dominion</h1>
-            <h2>Player Name: <span id="playerName"><input name="playerName" class="playerName" id="playerNameInput" type="text" /></span><button id="addPlayer" class="btn2" onclick="addPlayer();">Confirm</button></h2>
+            <h2>Player Name: <span id="playerName"><input name="playerName" class="playerName" id="playerNameInput" type="text" /></span>&nbsp;<button id="addPlayer" class="btn2" onclick="addPlayer();">Confirm</button></h2>
         </header>
         <div class="box">
         <div class="board">
@@ -77,11 +56,11 @@
 
         <div class="box">
             <div class="row">
-                <div class="hand col-xs-1"></div>
-                <div class="hand col-xs-1"></div>
-                <div class="hand col-xs-1"></div>
-                <div class="hand col-xs-1"></div>
-                <div class="hand col-xs-1"></div>
+                <div class="hand col-xs-1" id="hand0" ><img id="card0"></div>
+                <div class="hand col-xs-1" id="hand1" ><img id="card1"></div>
+                <div class="hand col-xs-1" id="hand2" ><img id="card2"></div>
+                <div class="hand col-xs-1" id="hand3" ><img id="card3"></div>
+                <div class="hand col-xs-1" id="hand4" ><img id="card4"></div>
                 
             </div>
             

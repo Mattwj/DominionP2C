@@ -39,6 +39,8 @@ function reset(){
         }
     });
 
+    location.reload();
+
 }
 
 function addPlayer(){
@@ -55,5 +57,29 @@ function addPlayer(){
             console.log(data);
         }
     });
+    hand = playerHand();
+    console.log(hand);
+}
 
+
+function playerHand(){
+    var response = null;
+    var name = $("#playerNameInput").val();
+    $.ajax({
+        url:"http://192.168.0.230/GetPlayer/" +name,
+        method:"GET",
+        async: false,
+        success:function(data){
+            response = data;
+            
+        }
+    });
+    var hand = JSON.parse(response['data']).hand;
+    $(".hand").hide();
+    for(var i=0; i< hand.length; i++){
+        $("#card"+i).attr("src", "http://192.168.0.230/Image/"+ hand[i]);
+        $("#hand"+i).show();
+        
+    }
+    return hand;
 }

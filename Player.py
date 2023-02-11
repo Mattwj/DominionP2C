@@ -22,8 +22,8 @@ class Player:
             self.discard.append(c)
         for c in self.usedCards:
             self.discard.append(c)
-        self.usedCards = []     
-        self.buyPhaseEffects = []   
+        self.usedCards.clear()   
+        self.buyPhaseEffects.clear()
         self.newHand()
 
     def __init__(self, name):
@@ -47,6 +47,7 @@ class Player:
     def newHand(self):
         for c in self.hand:
             self.discard.append(c)
+        self.hand.clear()
         for i in range(0,5):
             self.drawCard()
 

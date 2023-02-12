@@ -9,17 +9,20 @@ class Board:
     gamestarted = False
     usableCards = []
     playerOrder = []
+    usedCards = []
     
     def __init__(self):
         self.players = []
         self.cards = {}
         self.gamestarted = False
         self.playerOrder = []
+        self.usedCards = []
         self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
 
     def fullReset(self):
         self.players.clear()
         self.cards.clear()
+        self.usedCards.clear()
         self.gamestarted = False
         self.playerOrder.clear()
         self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
@@ -67,7 +70,7 @@ class Board:
             self.cards["Gold"] = -1
             self.cards["Silver"] = -1
             self.cards["Copper"] = -1
-            for card in self.cards:
+            for card in self.usedCards:
                 if isVictoryCard(card):
                     self.cards[card] = 8
                 else :
@@ -93,7 +96,7 @@ class Board:
     def pickFromUsableCards(self):
         for i in range(10):
             card = choice(self.usableCards)
-            self.cards.append(card)
+            self.usedCards.append(card)
             self.usableCards.remove(card)        
     
     def passTurn(self, player):

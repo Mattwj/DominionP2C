@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from CardEffectsLogic import isVictoryCard
 from Player import Player
 from random import choice, shuffle
 
@@ -18,7 +19,7 @@ class Board:
 
     def fullReset(self):
         self.players.clear()
-        self.cards = {}
+        self.cards.clear()
         self.gamestarted = False
         self.playerOrder.clear()
         self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
@@ -54,6 +55,8 @@ class Board:
         for p in shuffled :
             self.playerOrder.push(p.name)
         
+        self.pickFromUsableCards()
+        
         if len(self.players) == 2 :
             self.cards["Estate"] = 8
             self.cards["Duchy"] = 8
@@ -62,6 +65,11 @@ class Board:
             self.cards["Gold"] = -1
             self.cards["Silver"] = -1
             self.cards["Copper"] = -1
+            for card in self.cards:
+                if isVictoryCard(card):
+                    self.cards[card] = 8
+                else :
+                    self.cards[card] = 10
             
     def performPotentialAttackOnOthers(self, player, cardName) :
         if cardName == "Witch" :

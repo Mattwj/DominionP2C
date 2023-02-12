@@ -79,3 +79,6 @@ def getCardCost(cardName):
         return 6
     if cardName in ["Province"]:
         return 8
+    
+def isVictoryCard(cardName) :
+    return cardName in["Estate", "Duchy", "Province", "Harem", "Duke"]

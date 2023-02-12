@@ -83,3 +83,19 @@ function playerHand(){
     }
     return hand;
 }
+
+function boardCards(){
+    var board = null;
+    $.ajax({
+        url: "http://192.168.0.230/GetCards",
+        method: "GET",
+        async: false,
+        success:function(data){
+            board = data;
+            
+            console.log(data);
+        }
+    });
+    
+    
+}

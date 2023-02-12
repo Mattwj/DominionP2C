@@ -3,6 +3,8 @@ from flask import Flask, jsonify, render_template, send_file
 from Board import Board
 import subprocess
 
+#Test Commit
+
 app = Flask(__name__, template_folder='/home/pi/Dominion/')
 
 @app.route("/GitPull", methods=['GET'])
@@ -33,7 +35,7 @@ def GetPlayer(name = ""):
     player = board.getPlayer(name)
     if player is not None:
         return prepareResponse(player.out())
-    return prepareResponse(player)
+    return prepareResponse(player) 
 
 @app.route("/UseCard/<playerName>/<cardName>", methods=['POST'])
 def UseCard(cardName = "", playerName = ""):

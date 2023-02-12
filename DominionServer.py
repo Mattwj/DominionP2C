@@ -57,7 +57,7 @@ def GetCards():
 
 @app.route("/GetCardsWithCounts", methods=["GET"])
 def GetCardsWithCounts():
-    return prepareResponse(board.getCardsWithCounts())
+    return prepareResponse(board.getAllCardsWithCounts())
 
 @app.route("/StartGame", methods=["POST"])
 def StartGame():
@@ -96,7 +96,7 @@ def EndpointDocumentation():
     endpointsInfo.append("/UseCard/<PlayerName>/<CardName> : POST - Attempts to have the given player used the passed card - the PlayerName parameter is the name of the player, the CardName is the name of the card that is being attempted to be used")
     endpointsInfo.append("/BuyPhase/<PlayerName> : POST - Triggers the buy phase for a player - the PlayerName is the name of the player")
     endpointsInfo.append("/GetCards : GET - Gets the list of the 10 cards being used in the current game - No parameters")
-    endpointsInfo.append("/GetCardsWithCounts : GET - Gets the list of the 10 cards being used in the current game with another list with their respective counts - No parameters")
+    endpointsInfo.append("/GetCardsWithCounts : GET - Gets the list of all purchasable cards being used in the current game with another list with their respective counts - No parameters")
     endpointsInfo.append("/StartGame : GET - Starts the game - No parameters")
     endpointsInfo.append("/EndTurn/<PlayerName> : POST - Triggers the end of turn for the passed player and returns the next player in turn (logic needs changing eventually) - the PlayerName parameter is the name of the player")
     endpointsInfo.append("/ResetGame : POST - Resets the game removing all data - TESTING ONLY - No parameters")

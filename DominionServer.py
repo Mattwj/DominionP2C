@@ -56,7 +56,7 @@ def GetCards():
     return prepareResponse(board.getCards())
 
 @app.route("/GetCardsWithCounts", methods=["GET"])
-def GetCards():
+def GetCardsWithCounts():
     return prepareResponse(board.getCardsWithCounts())
 
 @app.route("/StartGame", methods=["POST"])

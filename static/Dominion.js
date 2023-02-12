@@ -59,6 +59,15 @@ function addPlayer(){
     });
     hand = playerHand();
     console.log(hand);
+    $.ajax({
+        url:"http://192.168.0.230/Endpoints",
+        method:"GET",
+        async: false,
+        success:function(data){
+            response = data;
+            console.log(data);
+        }
+    });
 }
 
 
@@ -74,6 +83,7 @@ function playerHand(){
             
         }
     });
+    console.log(response['data']);
     var hand = JSON.parse(response['data']).hand;
     $(".hand").hide();
     for(var i=0; i< hand.length; i++){
@@ -96,6 +106,15 @@ function boardCards(){
             console.log(board);
         }
     });
+    console.log(board['data']);
+    var boardcards = JSON.parse(board['data']).cards;
+    console.log(boardcards);
+    $(".gameCards").hide();
+    for(var i=0; i< boardcards.length; i++){
+        $("#cboard"+i).attr("src", "http://192.168.0.230/Image/"+ boardcards[i]);
+        $("#gameCards"+i).show();
+        
+    }
     
     
 }

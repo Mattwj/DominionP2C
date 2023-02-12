@@ -52,11 +52,7 @@ class Board:
         
         shuffled = self.players
         
-        print(self.players)
-        
-        shuffled = shuffle(shuffled)
-        
-        print(shuffled)
+        shuffle(shuffled)
         
         for p in shuffled :
             print(p)

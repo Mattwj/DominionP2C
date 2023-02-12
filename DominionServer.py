@@ -55,6 +55,10 @@ def MoveToBuyPhase(playerName = ""):
 def GetCards():
     return prepareResponse(board.getCards())
 
+@app.route("/GetCardsWithCounts", methods=["GET"])
+def GetCards():
+    return prepareResponse(board.getCardsWithCounts())
+
 @app.route("/StartGame", methods=["POST"])
 def StartGame():
     return prepareResponse(board.startGame())
@@ -82,20 +86,21 @@ def BuyCard(playerName = "", cardName = ""):
 @app.route("/Endpoints", methods=["GET"])
 def EndpointDocumentation():
     endpointsInfo = {}
-    endpointsInfo["/GitPull"] = "GET - Performs a Git Pull and is used to update the server - No parameters"
-    endpointsInfo["/Endpoints"] = "GET - Returns information on all endpoints and how to use them - No parameters"
-    endpointsInfo["/"] = "GET - Gets the webpage - No parameters"
-    endpointsInfo["/Image/<CardName>"] = "GET - Gets an image from the Image folder - the CardName parameter is the name of the card"
-    endpointsInfo["/Test"] = "GET - Performs a Test to see if the server is up - No parameters"
-    endpointsInfo["/AddPlayer/<PlayerName>"] = "POST - Adds a player to the game - the PlayerName parameter is the name of the player"
-    endpointsInfo["/GetPlayer/<PlayerName>"] = "GET - Get the player with the given name - the PlayerName parameter is the name of the player"
-    endpointsInfo["/UseCard/<PlayerName>/<CardName>"] = "POST - Attempts to have the given player used the passed card - the PlayerName parameter is the name of the player, the CardName is the name of the card that is being attempted to be used"
-    endpointsInfo["/BuyPhase/<PlayerName>"] = "POST - Triggers the buy phase for a player - the PlayerName is the name of the player"
-    endpointsInfo["/GetCards"] = "GET - Gets the list of the 10 cards being used in the current game - No parameters"
-    endpointsInfo["/StartGame"] = "GET - Starts the game - No parameters"
-    endpointsInfo["/EndTurn/<PlayerName>"] = "POST - Triggers the end of turn for the passed player and returns the next player in turn (logic needs changing eventually) - the PlayerName parameter is the name of the player"
-    endpointsInfo["/ResetGame"] = "POST - Resets the game removing all data - TESTING ONLY - No parameters"
-    endpointsInfo["/IsTurn/<PlayerName>"] = "GET - Returns turn if its currently the passed players turn - the PlayerName parameter is the name of the player"
+    endpointsInfo.append("/GitPull : GET - Performs a Git Pull and is used to update the server - No parameters")
+    endpointsInfo.append("/Endpoints : GET - Returns information on all endpoints and how to use them - No parameters")
+    endpointsInfo.append("/ : GET - Gets the webpage - No parameters")
+    endpointsInfo.append("/Image/<CardName> : GET - Gets an image from the Image folder - the CardName parameter is the name of the card")
+    endpointsInfo.append("/Test : GET - Performs a Test to see if the server is up - No parameters")
+    endpointsInfo.append("/AddPlayer/<PlayerName> : POST - Adds a player to the game - the PlayerName parameter is the name of the player")
+    endpointsInfo.append("/GetPlayer/<PlayerName> : GET - Get the player with the given name - the PlayerName parameter is the name of the player")
+    endpointsInfo.append("/UseCard/<PlayerName>/<CardName> : POST - Attempts to have the given player used the passed card - the PlayerName parameter is the name of the player, the CardName is the name of the card that is being attempted to be used")
+    endpointsInfo.append("/BuyPhase/<PlayerName> : POST - Triggers the buy phase for a player - the PlayerName is the name of the player")
+    endpointsInfo.append("/GetCards : GET - Gets the list of the 10 cards being used in the current game - No parameters")
+    endpointsInfo.append("/GetCardsWithCounts : GET - Gets the list of the 10 cards being used in the current game with another list with their respective counts - No parameters")
+    endpointsInfo.append("/StartGame : GET - Starts the game - No parameters")
+    endpointsInfo.append("/EndTurn/<PlayerName> : POST - Triggers the end of turn for the passed player and returns the next player in turn (logic needs changing eventually) - the PlayerName parameter is the name of the player")
+    endpointsInfo.append("/ResetGame : POST - Resets the game removing all data - TESTING ONLY - No parameters")
+    endpointsInfo.append("/IsTurn/<PlayerName> : GET - Returns turn if its currently the passed players turn - the PlayerName parameter is the name of the player")
     return prepareResponse(endpointsInfo)
     
 

@@ -46,7 +46,7 @@ def activateCard(cardName, player):
     if name == "Witch":
         player.DrawCards(3)
         
-    if name == "Council Room" :
+    if name == "Council_Room" :
         player.DrawCards(4)
         player.InceaseBuys(1)
     
@@ -73,7 +73,7 @@ def getCardCost(cardName):
         return 3
     if cardName in ["Smithy"] :
         return 4
-    if cardName in ["Council Room", "Festival", "Laboratory", "Market", "Witch", "Duchy", "Duke"] :
+    if cardName in ["Council_Room", "Festival", "Laboratory", "Market", "Witch", "Duchy", "Duke"] :
         return 5
     if cardName in ["Harem"]:
         return 6

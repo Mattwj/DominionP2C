@@ -19,7 +19,7 @@ class Board:
         self.playerOrder = []
         self.usedCards = []
         self.currPlayer = ""
-        self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
+        self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council_Room", "Harem", "Duke"]
 
     def fullReset(self):
         self.players.clear()
@@ -28,7 +28,7 @@ class Board:
         self.gamestarted = False
         self.playerOrder.clear()
         self.currPlayer = ""
-        self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
+        self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council_Room", "Harem", "Duke"]
         
 
     def addPlayer(self, name):
@@ -93,7 +93,7 @@ class Board:
                                 self.cards["Curse"] = self.cards["Curse"] - 1
                                 
     def performPotentialEffectOnOthers(self, player, cardName) :
-        if cardName == "Council Room" :
+        if cardName == "Council_Room" :
             for p in self.players:
                 if p != player.name:
                     p.DrawCards(1)

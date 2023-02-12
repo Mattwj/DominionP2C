@@ -70,7 +70,7 @@ class Player:
                 return
             for c in self.discard:
                 self.deck.append(c)
-            self.discard =[]
+            self.discard.clear()
             random.shuffle(self.deck)
         cardIndex = random.choice(range(0, len(self.deck)))
         self.hand.append(self.deck[cardIndex])

@@ -70,6 +70,7 @@ class Board:
                     self.cards[card] = 8
                 else :
                     self.cards[card] = 10
+        return True
             
     def performPotentialAttackOnOthers(self, player, cardName) :
         if cardName == "Witch" :

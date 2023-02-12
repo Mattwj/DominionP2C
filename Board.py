@@ -50,7 +50,9 @@ class Board:
         else :
             return False
         
-        shuffled = shuffle(self.players)
+        shuffled = self.players
+        
+        shuffled = shuffle(shuffled)
         
         for p in shuffled :
             self.playerOrder.push(p.name)

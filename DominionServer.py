@@ -85,7 +85,7 @@ def BuyCard(playerName = "", cardName = ""):
 
 @app.route("/Endpoints", methods=["GET"])
 def EndpointDocumentation():
-    endpointsInfo = {}
+    endpointsInfo = []
     endpointsInfo.append("/GitPull : GET - Performs a Git Pull and is used to update the server - No parameters")
     endpointsInfo.append("/Endpoints : GET - Returns information on all endpoints and how to use them - No parameters")
     endpointsInfo.append("/ : GET - Gets the webpage - No parameters")

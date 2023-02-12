@@ -19,6 +19,7 @@ header {
 }
 .board{
     margin: 20px;
+    padding: 0px;
 
 }
 
@@ -105,10 +106,10 @@ header {
 }
 
 .btn2 {
-    font-size: 17px;
+    font-size: 16px;
     background: transparent;
     border: none;
-    padding: 1em 1.5em;
+    padding: 1em 1em;
     color: #573d19;
     text-transform: uppercase;
     position: relative;
@@ -151,4 +152,8 @@ header {
     height: 100%;
     transition-delay: 0.4s;
     color: rgb(36, 78, 114);
+  }
+
+  .small{
+    padding: 0;
   }

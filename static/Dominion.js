@@ -93,9 +93,26 @@ function boardCards(){
         success:function(data){
             board = data;
             
-            console.log(data);
+            console.log(board);
         }
     });
     
     
+}
+
+function startGame(){
+    $("#startGame").hide();
+    
+    var response = null;
+    $.ajax({
+        url:"http://192.168.0.230/StartGame",
+        method:"POST",
+        async: false,
+        success:function(data){
+            response = data;
+            console.log(data);
+        }
+    });
+    board = boardCards();
+    console.log(board);
 }

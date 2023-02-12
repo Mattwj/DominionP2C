@@ -48,7 +48,7 @@ class Board:
         if self.gamestarted == True:
             return False
         
-        if len(self.players) > 0 :
+        if len(self.players) > 1 :
             self.gamestarted = True
         else :
             return False

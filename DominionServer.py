@@ -69,6 +69,10 @@ def ResetGame():
     board.fullReset()
     return prepareResponse("true")
 
+@app.route("/IsTurn/<playerName>", methods=["GET"])
+def IsTurn(playerName = ""):
+    return board.currPlayer == playerName
+
 @app.route("/BuyCard/<playerName>/<cardName>", methods=["POST"])
 def BuyCard(playerName = "", cardName = ""):
     player = board.getPlayer(playerName)
@@ -91,6 +95,7 @@ def EndpointDocumentation():
     endpointsInfo["/StartGame"] = "GET - Starts the game - No parameters"
     endpointsInfo["/EndTurn/<PlayerName>"] = "POST - Triggers the end of turn for the passed player and returns the next player in turn (logic needs changing eventually) - the PlayerName parameter is the name of the player"
     endpointsInfo["/ResetGame"] = "POST - Resets the game removing all data - TESTING ONLY - No parameters"
+    endpointsInfo["/IsTurn/<PlayerName>"] = "GET - Returns turn if its currently the passed players turn - the PlayerName parameter is the name of the player"
     
 
 def prepareResponse(value):

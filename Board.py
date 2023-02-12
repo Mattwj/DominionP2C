@@ -10,6 +10,7 @@ class Board:
     usableCards = []
     playerOrder = []
     usedCards = []
+    currPlayer = ""
     
     def __init__(self):
         self.players = []
@@ -17,6 +18,7 @@ class Board:
         self.gamestarted = False
         self.playerOrder = []
         self.usedCards = []
+        self.currPlayer = ""
         self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
 
     def fullReset(self):
@@ -25,6 +27,7 @@ class Board:
         self.usedCards.clear()
         self.gamestarted = False
         self.playerOrder.clear()
+        self.currPlayer = ""
         self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council Room", "Harem"]
         
 
@@ -59,6 +62,8 @@ class Board:
         
         for p in shuffled :
             self.playerOrder.append(p.name)
+        
+        self.currPlayer = self.playerOrder[0]
         
         self.pickFromUsableCards()
         
@@ -102,11 +107,13 @@ class Board:
     def passTurn(self, player):
         player.newTurn()
         if self.playerOrder[-1] == player.name:
+            self.currPlayer = self.playerOrder[0]
             return self.getPlayer(self.playerOrder[0])
         else :
             nextIsGood = False
             for name in self.playerOrder:
                 if nextIsGood == True :
+                    self.currPlayer = name
                     return self.getPlayer(name)  
                 if name == player.name:
                     nextIsGood = True

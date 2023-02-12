@@ -126,16 +126,15 @@ class Board:
         resp = resp + ']}'
         return resp    
     
-    def getCardsWithCounts(self):
+    def getAllCardsWithCounts(self):
         resp = '''{"cards":['''
-        for c in self.usedCards:
+        for c in self.cards:
             resp = resp + '''"''' + c + '''",'''
         resp = resp.rstrip(',')
         resp = resp + '],'
-        resp = '''{"counts":['''
-        for c in self.card:
-            if c in self.usedCards:
-                resp = resp + '''"''' + c + '''",'''
+        resp = '''"counts":['''
+        for c, num in self.cards.items():
+            resp = resp + '''"''' + str(num) + '''",'''
         resp = resp.rstrip(',')
         resp = resp + ']}'
         return resp

@@ -55,8 +55,7 @@ class Board:
         shuffle(shuffled)
         
         for p in shuffled :
-            print(p)
-            self.playerOrder.push(p.name)
+            self.playerOrder.append(p.name)
         
         self.pickFromUsableCards()
         
@@ -94,7 +93,7 @@ class Board:
     def pickFromUsableCards(self):
         for i in range(10):
             card = choice(self.usableCards)
-            self.cards.push(card)
+            self.cards.append(card)
             self.usableCards.remove(card)        
     
     def passTurn(self, player):

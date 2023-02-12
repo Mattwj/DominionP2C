@@ -1,6 +1,6 @@
 #pylint:disable=W0612
 import random
-from CardEffectsLogic import activateCard, getCardCost, isCoinCard, useBuyPhaseEffect
+from CardEffectsLogic import activateCard, getCardCost, getVictoryPoints, isCoinCard, isVictoryCard, useBuyPhaseEffect
 
 class Player:
     name=''
@@ -43,6 +43,18 @@ class Player:
         resp = resp + ']}'
 
         return resp
+
+    #use only when game is ending
+    def moveAllToDeck(self):
+        for c in self.hand:
+            self.deck.append(c)
+        self.hand.clear()
+        for c in self.discard:
+            self.deck.append(c)
+        self.discard.clear()
+        for c in self.usedCards:
+            self.deck.append(c)
+        self.usedCards.clear()
 
     def newHand(self):
         for c in self.hand:
@@ -103,6 +115,15 @@ class Player:
             useBuyPhaseEffect(effect, self)
         for cc in self.hand :
             activateCard(cc, self)
+            
+    def calculateVictoryPoints(self):
+        total = 0
+        self.moveAllToDeck()
+        for c in self.deck:
+            if isVictoryCard(c) :
+                total = total + getVictoryPoints(c, self.deck)
+                
+        return total
 
     def AddCardToDeck(self, cardName):
         self.deck.append(cardName)

@@ -73,7 +73,7 @@ def getCardCost(cardName):
         return 3
     if cardName in ["Smithy"] :
         return 4
-    if cardName in ["Council Room", "Festival", "Laboratory", "Market", "Witch", "Duchy"] :
+    if cardName in ["Council Room", "Festival", "Laboratory", "Market", "Witch", "Duchy", "Duke"] :
         return 5
     if cardName in ["Harem"]:
         return 6
@@ -82,3 +82,16 @@ def getCardCost(cardName):
     
 def isVictoryCard(cardName) :
     return cardName in["Estate", "Duchy", "Province", "Harem", "Duke"]
+
+def getVictoryPoints(cardName, deck):
+    if cardName == "Estate":
+        return 1
+    if cardName == "Harem":
+        return 2
+    if cardName == "Duchy":
+        return 3
+    if cardName == "Province":
+        return 6
+    if cardName == "Duke":
+        return deck.count("Duchy")
+    return 0

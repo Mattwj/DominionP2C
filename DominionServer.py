@@ -75,6 +75,24 @@ def BuyCard(playerName = "", cardName = ""):
     player.tryBuyCard(cardName)
     return prepareResponse(player.out())
 
+@app.route("/Endpoints", methods=["GET"])
+def EndpointDocumentation():
+    endpointsInfo = {}
+    endpointsInfo["/GitPull"] = "GET - Performs a Git Pull and is used to update the server - No parameters"
+    endpointsInfo["/Endpoints"] = "GET - Returns information on all endpoints and how to use them - No parameters"
+    endpointsInfo["/"] = "GET - Gets the webpage - No parameters"
+    endpointsInfo["/Image/<CardName>"] = "GET - Gets an image from the Image folder - the CardName parameter is the name of the card"
+    endpointsInfo["/Test"] = "GET - Performs a Test to see if the server is up - No parameters"
+    endpointsInfo["/AddPlayer/<PlayerName>"] = "POST - Adds a player to the game - the PlayerName parameter is the name of the player"
+    endpointsInfo["/GetPlayer/<PlayerName>"] = "GET - Get the player with the given name - the PlayerName parameter is the name of the player"
+    endpointsInfo["/UseCard/<PlayerName>/<CardName>"] = "POST - Attempts to have the given player used the passed card - the PlayerName parameter is the name of the player, the CardName is the name of the card that is being attempted to be used"
+    endpointsInfo["/BuyPhase/<PlayerName>"] = "POST - Triggers the buy phase for a player - the PlayerName is the name of the player"
+    endpointsInfo["/GetCards"] = "GET - Gets the list of the 10 cards being used in the current game - No parameters"
+    endpointsInfo["/StartGame"] = "GET - Starts the game - No parameters"
+    endpointsInfo["/EndTurn/<PlayerName>"] = "POST - Triggers the end of turn for the passed player and returns the next player in turn (logic needs changing eventually) - the PlayerName parameter is the name of the player"
+    endpointsInfo["/ResetGame"] = "POST - Resets the game removing all data - TESTING ONLY - No parameters"
+    
+
 def prepareResponse(value):
     response = jsonify({'data': str(value)})
     response.headers.add('Access-Control-Allow-Origin', '*')

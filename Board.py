@@ -42,11 +42,11 @@ class Board:
         return None
     
     def startGame(self):
-        if gamestarted == True:
+        if self.gamestarted == True:
             return False
         
         if len(self.players) > 0 :
-            gamestarted = True
+            self.gamestarted = True
         else :
             return False
         

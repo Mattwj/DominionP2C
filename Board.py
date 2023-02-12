@@ -119,8 +119,8 @@ class Board:
                     nextIsGood = True
     
     def getCards(self):
-        resp = '''"cards":['''
-        for c in self.cards:
+        resp = '''{"cards":['''
+        for c in self.usedCards:
             resp = resp + '''"''' + c + '''",'''
         resp = resp.rstrip(',')
         resp = resp + ']}'

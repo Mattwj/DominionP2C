@@ -66,6 +66,10 @@ class Player:
         resp = resp.rstrip(',')
         resp = resp + ']}'
 
+        print(self.hand)
+        print(self.discard)
+        print(self.deck)
+        
         return resp
 
 

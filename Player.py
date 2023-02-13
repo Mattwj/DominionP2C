@@ -27,6 +27,7 @@ class Player:
         self.buyPhaseEffects.clear()
         self.newHand()
 
+
     def __init__(self, name):
         self.name=name
         self.actions=1
@@ -35,6 +36,7 @@ class Player:
         self.deck =['Estate','Estate','Estate','Copper','Copper','Copper','Copper','Copper','Copper','Copper']
         self.hand = []
         self.hand.clear()
+
 
     #json version of the object
     def out(self):
@@ -66,6 +68,7 @@ class Player:
 
         return resp
 
+
     #use only when game is ending
     def moveAllToDeck(self):
         for c in self.hand:
@@ -79,6 +82,7 @@ class Player:
         for c in self.usedCards:
             self.deck.append(c)
         self.usedCards.clear()
+
 
     def newHand(self):
         for c in self.hand:
@@ -99,11 +103,12 @@ class Player:
         cardIndex = random.choice(range(0, len(self.deck)))
         self.hand.append(self.deck[cardIndex])
         del self.deck[cardIndex]
+      
         
     def gainCard(self, cardName):
         self.discard.append(cardName)
 
-    #need a different method for attacks
+
     def tryUseCardAsAction(self, cardName):
         if cardName not in self.hand:
             return False
@@ -116,6 +121,7 @@ class Player:
                 return True
         return False
     
+    
     def tryUseCoinCard(self, cardName):
         if cardName not in self.hand:
             return False
@@ -123,6 +129,7 @@ class Player:
         self.hand.remove(cardName)
         self.usedCards.append(cardName)
         return True
+    
     
     def tryBuyCard(self, cardName):
         cost = getCardCost(cardName)
@@ -134,6 +141,7 @@ class Player:
             return True
         return False
     
+    
     def calculateCoins(self):
         for c in self.hand:
             if not isCoinCard(c) :
@@ -143,6 +151,7 @@ class Player:
             useBuyPhaseEffect(effect, self)
         for cc in self.hand :
             activateCard(cc, self)
+        
             
     def calculateVictoryPoints(self):
         total = 0
@@ -152,6 +161,7 @@ class Player:
                 total = total + getVictoryPoints(c, self.deck)
                 
         return total
+
 
     def AddCardToDeck(self, cardName):
         self.deck.append(cardName)

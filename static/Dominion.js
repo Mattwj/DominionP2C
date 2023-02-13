@@ -1,7 +1,8 @@
 function buyPhase(){
     var response = null;
+    var name = $("#playerNameInput").val();
     $.ajax({
-        url:"http://192.168.0.230/BuyPhase/Matt",
+        url:"http://192.168.0.230/BuyPhase/"+ name,
         method:"POST",
         async: false,
         success:function(data){
@@ -24,6 +25,8 @@ function endTurn(){
             console.log(data);
         }
     });
+
+    playerHand();
 
 }
 
@@ -101,7 +104,15 @@ function playerHand(){
     var coins = data.coins;
     $("#coins").text(coins);
 
-    
+    $.ajax({
+        url:"http://192.168.0.230/GetCardsWithCounts",
+        method:"GET",
+        async: false,
+        success:function(data){
+            response = data;
+            console.log(response);
+        }
+    });
 }
 
 function boardCards(){
@@ -122,9 +133,16 @@ function boardCards(){
     $(".gameCards").hide();
     for(var i=0; i< boardcards.length; i++){
         $("#cboard"+i).attr("src", "http://192.168.0.230/Image/"+ boardcards[i]);
+        $("#cboard"+i).attr("onclick","buyCard(this);");
         $("#gameCards"+i).show();
         
     }
+    var statics = $(".static");
+    statics.each(function(){
+        $(this).attr("onclick","buyCard(this);");
+        
+    });
+
     
     
 }
@@ -144,4 +162,26 @@ function startGame(){
     });
     board = boardCards();
     console.log(board);
+
+    playerHand();
 }
+
+function buyCard(cardimage){
+    var url = $(cardimage).attr("src");
+    var urlparts = url.split('/');
+    var card = urlparts.pop();
+
+    var name = $("#playerNameInput").val();
+    $.ajax({
+        url:"http://192.168.0.230/BuyCard/"+name + "/"+ card,
+        method:"POST",
+        async: false,
+        success:function(data){
+            response = data;
+            console.log(data);
+        }
+    });
+    playerHand();
+
+}
+

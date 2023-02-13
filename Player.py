@@ -32,7 +32,8 @@ class Player:
         self.buys=1
         self.coins=0
         self.deck =['Estate','Estate','Estate','Copper','Copper','Copper','Copper','Copper','Copper','Copper']
-        self.newHand()
+        self.hand = []
+        self.hand.clear()
 
     #json version of the object
     def out(self):

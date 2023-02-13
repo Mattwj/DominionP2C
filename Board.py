@@ -29,7 +29,6 @@ class Board:
         self.playerOrder.clear()
         self.currPlayer = ""
         self.usableCards = ["Smithy","Village","Market", "Moat", "Festival", "Laboratory", "Merchant", "Witch", "Council_Room", "Harem", "Duke"]
-        
 
     def addPlayer(self, name):
         found = False
@@ -86,6 +85,25 @@ class Board:
                 else :
                     self.cards[card] = 10
         return True
+            
+    def isGameOver(self):
+        isOver = False
+        if self.cards["Province"] == 0:        
+            isOver = True
+        if isOver == False :
+            zCounts = 0
+            for card, count in self.cards.items():
+                if count == 0:
+                    zCounts = zCounts + 1
+            if zCounts > 2:
+                isOver = True
+        playerScores = {}
+        if isOver == True:
+            for p in self.players:
+                playerScores[p.name] = p.calculateVictoryPoints()
+        return playerScores
+            
+            
             
     def performPotentialAttackOnOthers(self, player, cardName) :
         if cardName == "Witch" :

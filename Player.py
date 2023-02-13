@@ -165,7 +165,7 @@ class Player:
         total = 0
         self.moveAllToDeck()
         for c in self.deck:
-            if isVictoryCard(c) :
+            if isVictoryCard(c) == True :
                 total = total + getVictoryPoints(c, self.deck)
                 
         return total

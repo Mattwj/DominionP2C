@@ -78,6 +78,13 @@ def ResetGame():
     board.fullReset()
     return prepareResponse("true")
 
+@app.route("/IsGameOver", methods=["GET"])
+def IsGameOver() :
+    result = board.isGameOver()
+    if len(result) > 0:
+        return prepareResponse(result)
+    return  prepareResponse("false")
+
 @app.route("/IsTurn/<playerName>", methods=["GET"])
 def IsTurn(playerName = ""):
     return prepareResponse(board.currPlayer == playerName)
@@ -100,7 +107,8 @@ def EndpointDocumentation():
     endpointsInfo = endpointsInfo + "/StartGame : GET - Starts the game - No parameters \n"
     endpointsInfo = endpointsInfo + "/EndTurn/<PlayerName> : POST - Triggers the end of turn for the passed player and returns the next player in turn (logic needs changing eventually) - the PlayerName parameter is the name of the player \n"
     endpointsInfo = endpointsInfo + "/ResetGame : POST - Resets the game removing all data - TESTING ONLY - No parameters \n"
-    endpointsInfo = endpointsInfo + "/IsTurn/<PlayerName> : GET - Returns turn if its currently the passed players turn - the PlayerName parameter is the name of the player \n"
+    endpointsInfo = endpointsInfo + "/IsTurn/<PlayerName> : GET - Returns true if its currently the passed players turn - the PlayerName parameter is the name of the player \n"
+    endpointsInfo = endpointsInfo + "/IsGameOver : GET - Returns false if game is not over otherwise returns a dictionary with player names and final scores - No parameters \n"
     return prepareResponse(endpointsInfo)
     
 

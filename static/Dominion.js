@@ -91,6 +91,7 @@ function playerHand(){
     $(".hand").hide();
     for(var i=0; i< hand.length; i++){
         $("#card"+i).attr("src", "http://192.168.0.230/Image/"+ hand[i]);
+        $("#card"+i).attr("onclick","handAction(this);");
         $("#hand"+i).show();
         
     }
@@ -185,3 +186,20 @@ function buyCard(cardimage){
 
 }
 
+function handAction(cardimage){
+    var url = $(cardimage).attr("src");
+    var urlparts = url.split('/');
+    var card = urlparts.pop();
+
+    var name = $("#playerNameInput").val();
+    $.ajax({
+        url:"http://192.168.0.230/UseCard/"+name + "/"+ card,
+        method:"POST",
+        async: false,
+        success:function(data){
+            response = data;
+            console.log(data);
+        }
+    });
+    playerHand();
+}

@@ -64,7 +64,7 @@ header {
   color: #ffedd3;
   text-transform: uppercase;
   position: relative;
-  transition: .5s ease;
+  transition: .3s ease;
 }
 
 .btn::before {
@@ -75,12 +75,12 @@ header {
   height: 2px;
   width: 0;
   background-color: #ffc506;
-  transition: .5s ease;
+  transition: .3s ease;
 }
 
 .btn:hover {
   color: #1e1e2b;
-  transition-delay: .5s;
+  transition-delay: .3s;
 }
 
 .btn:hover::before {
@@ -95,13 +95,13 @@ header {
   height: 0;
   width: 100%;
   background-color: #ffc506;
-  transition: .4s ease;
+  transition: .2s ease;
   z-index: -1;
 }
 
 .btn:hover::after {
   height: 100%;
-  transition-delay: 0.4s;
+  transition-delay: 0.2s;
   color: aliceblue;
 }
 
@@ -113,7 +113,7 @@ header {
     color: #573d19;
     text-transform: uppercase;
     position: relative;
-    transition: .5s ease;
+    transition: .3s ease;
   }
   
   .btn2::before {
@@ -123,13 +123,13 @@ header {
     bottom: 0;
     height: 2px;
     width: 0;
-    background-color: #405feb;
-    transition: .5s ease;
+    background-color: #3e718b;
+    transition: .3s ease;
   }
   
   .btn2:hover {
-    color: #1e1e2b;
-    transition-delay: .5s;
+    color: white;
+    transition-delay: .3s;
   }
   
   .btn2:hover::before {
@@ -143,24 +143,48 @@ header {
     bottom: 0;
     height: 0;
     width: 100%;
-    background-color: #405feb;
-    transition: .4s ease;
+    background-color: #3e718b;
+    transition: .3s ease;
     z-index: -1;
   }
   
   .btn2:hover::after {
     height: 100%;
-    transition-delay: 0.4s;
+    transition-delay: 0.2s;
     color: rgb(36, 78, 114);
   }
 
   .small{
+    font-size: 36px;
     padding: 0;
   }
 
-  .resources.col-xs-1{
-    color: black;
+
+  .resources {
     background-color: #96da67;
-    width:auto;
-    height:auto;
+    width:fit-content;
+    font-size: 14px;
+    font-weight: bold;
   }
+
+ .playerhand{
+  font-size: 34px;
+  font-weight: bold;
+ }
+
+
+ .overlay{
+  color:cornsilk;
+  border-radius: 50%;
+  background-color: rgba(205, 92, 92, 0.9);
+  width:30px;
+  height:30px;
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  bottom: 115px;
+  right:7.5px;
+  display: none;
+ }

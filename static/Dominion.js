@@ -144,7 +144,7 @@ function boardCards(){
         
     });
 
-    
+    cardCounts();
     
 }
 
@@ -202,4 +202,35 @@ function handAction(cardimage){
         }
     });
     playerHand();
+}
+
+function cardCounts(){
+        var counts = null;
+    $.ajax({
+        url: "http://192.168.0.230/GetCardsWithCounts",
+        method: "GET",
+        async: false,
+        success:function(data){
+            info = data;
+            
+            console.log(info);
+        }
+    });
+
+    var info = JSON.parse(info['data']);
+    var finites = $(".finite");
+    for(var i=0; i<finites.length; i++){
+        for(var j=0; j<info.cards.length; j++){
+            if($($(finites[i]).children("img")[0]).attr("src").search(info.cards[j])!=-1){
+                
+                var spanEle = $(finites[i]).find("span")[0];
+                spanEle.innerHTML = info.counts[j];
+                
+            }
+        }
+    }
+    $(".overlay").show();
+
+    
+
 }

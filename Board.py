@@ -107,16 +107,19 @@ class Board:
             self.usableCards.remove(card)        
     
     def passTurn(self, player):
-        player.newTurn()
         if self.playerOrder[-1] == player.name:
             self.currPlayer = self.playerOrder[0]
-            return self.getPlayer(self.playerOrder[0])
+            nextPlayer = self.getPlayer(self.playerOrder[0])
+            nextPlayer.newTurn()
+            return nextPlayer
         else :
             nextIsGood = False
             for name in self.playerOrder:
                 if nextIsGood == True :
                     self.currPlayer = name
-                    return self.getPlayer(name)  
+                    nextPlayer = self.getPlayer(name)  
+                    nextPlayer.newTurn()
+                    return nextPlayer
                 if name == player.name:
                     nextIsGood = True
     

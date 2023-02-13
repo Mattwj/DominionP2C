@@ -116,7 +116,7 @@ class Player:
     def tryBuyCard(self, cardName):
         cost = getCardCost(cardName)
         if self.coins >= cost:
-            if self.buys > 1:
+            if self.buys >= 1:
                 self.DecreaseCoins(cost)
                 self.AddCardToDiscard(cardName)
                 self.DecreaseBuys(1)

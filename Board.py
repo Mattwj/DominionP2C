@@ -64,10 +64,8 @@ class Board:
             self.playerOrder.append(p.name)
         
         self.currPlayer = self.playerOrder[0]
-        print(self.currPlayer)
-        print(self.getPlayer(self.currPlayer).out())
+        
         self.getPlayer(self.currPlayer).newTurn()
-        print(self.getPlayer(self.currPlayer).out())
         
         self.pickFromUsableCards()
         

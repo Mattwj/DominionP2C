@@ -9,9 +9,7 @@ class Player:
     coins=0
     deck=[]
     hand=[]
-    discard=[]
-    usedCards=[]
-    buyPhaseEffects = []
+    
 
 
     def newTurn(self):
@@ -38,6 +36,9 @@ class Player:
         self.deck =['Estate','Estate','Estate','Copper','Copper','Copper','Copper','Copper','Copper','Copper']
         self.hand = []
         self.hand.clear()
+        self.discard =[]
+        self.usedCards=[]
+        self.buyPhaseEffects = []
 
 
     #json version of the object

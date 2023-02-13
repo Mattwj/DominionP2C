@@ -24,21 +24,21 @@
 
             <div class="row">
                 
-                <div class="mainCards col-xs-1" id="gameCards0"><img id="cboard0"></div>
-                <div class="mainCards col-xs-1" id="gameCards1"><img id="cboard1"></div>
-                <div class="mainCards col-xs-1" id="gameCards2"><img id="cboard2"></div>
-                <div class="mainCards col-xs-1" id="gameCards3"><img id="cboard3"></div>
-                <div class="mainCards col-xs-1" id="gameCards4"><img id="cboard4"></div>                
-                <div class="col-xs-1 points"><img class="static" src="http://192.168.0.230/Image/Province"></div>
+                <div class="mainCards col-xs-1 finite" id="gameCards0"><span class="overlay" id="overlay0">-</span><img id="cboard0"></div>
+                <div class="mainCards col-xs-1 finite" id="gameCards1"><span class="overlay" id="overlay1">-</span><img id="cboard1"></div>
+                <div class="mainCards col-xs-1 finite" id="gameCards2"><span class="overlay" id="overlay2">-</span><img id="cboard2"></div>
+                <div class="mainCards col-xs-1 finite" id="gameCards3"><span class="overlay" id="overlay3">-</span><img id="cboard3"></div>
+                <div class="mainCards col-xs-1 finite" id="gameCards4"><span class="overlay" id="overlay4">-</span><img id="cboard4"></div>                
+                <div class="col-xs-1 points finite"><span class="overlay" id="overlay5">-</span><img class="static" src="http://192.168.0.230/Image/Province"></div>
             </div>
     
             <div class="row">
-                <div class="mainCards col-xs-1" id="gameCards5"><img id="cboard5"></div>
-                <div class="mainCards col-xs-1" id="gameCards6"><img id="cboard6"></div>
-                <div class="mainCards col-xs-1" id="gameCards7"><img id="cboard7"></div>
-                <div class="mainCards col-xs-1" id="gameCards8"><img id="cboard8"></div>
-                <div class="mainCards col-xs-1" id="gameCards9"><img id="cboard9"></div>
-                <div class="col-xs-1 points"><img class="static" src="http://192.168.0.230/Image/Duchy"></div>
+                <div class="mainCards col-xs-1 finite" id="gameCards5"><span class="overlay" id="overlay0">-</span><img id="cboard5"></div>
+                <div class="mainCards col-xs-1 finite" id="gameCards6"><span class="overlay" id="overlay0">-</span><img id="cboard6"></div>
+                <div class="mainCards col-xs-1 finite" id="gameCards7"><span class="overlay" id="overlay0">-</span><img id="cboard7"></div>
+                <div class="mainCards col-xs-1 finite" id="gameCards8"><span class="overlay" id="overlay0">-</span><img id="cboard8"></div>
+                <div class="mainCards col-xs-1 finite" id="gameCards9"><span class="overlay" id="overlay0">-</span><img id="cboard9"></div>
+                <div class="col-xs-1 points finite"><span class="overlay" id="overlay0">-</span><img class="static" src="http://192.168.0.230/Image/Duchy"></div>
             </div>
             <div class="row">
                
@@ -48,35 +48,43 @@
                 <!-- <div class="trash col-xs-3"><img src="http://192.168.0.230/Image/Trash" ></div> -->
                 <div class="space col-xs-1"></div>
             
-                <div class="curse col-xs-1"><img class="static" src="http://192.168.0.230/Image/Curse"></div>
+                <div class="curse col-xs-1 finite"><span class="overlay" id="overlay0">-</span><img class="static" src="http://192.168.0.230/Image/Curse"></div>
                 
-                <div class="col-xs-1 points"><img class="static" src="http://192.168.0.230/Image/Estate"></div>
+                <div class="col-xs-1 points finite"><span class="overlay" id="overlay0">-</span><img class="static" src="http://192.168.0.230/Image/Estate"></div>
             </div>
         </div>
         </div>
-
         <div class="box">
+            <h2 class="playerhand">Player Hand</h2>
+        </div>
+        <div class="box">
+            <p class="resources">
+                Actions: <span id="actions">-</span> &nbsp;
+                Buys: <span id="buys">-</span> &nbsp;
+                Coins: <span id="coins">-</span> &nbsp;
+            </p>
+        </div>
+        
+        <div class="box">
+           
             <div class="row">
                 <div class="hand col-xs-1" id="hand0" ><img id="card0"></div>
                 <div class="hand col-xs-1" id="hand1" ><img id="card1"></div>
                 <div class="hand col-xs-1" id="hand2" ><img id="card2"></div>
                 <div class="hand col-xs-1" id="hand3" ><img id="card3"></div>
                 <div class="hand col-xs-1" id="hand4" ><img id="card4"></div>
-                <div class="resources col-xs-1">
-                    Actions: <span id="actions">-</span> <br>
-                    Buys: <span id="buys">-</span> <br>
-                    Coins: <span id="coins">-</span>
-                </div>
+                <div class="hand col-xs-1" id="hand5" ><img id="card5"></div>
             </div>
         </div>
             
         <div class="box">
             <div class="row">
-                <div class="hand col-xs-1" id="hand5" ><img id="card5"></div>
                 <div class="hand col-xs-1" id="hand6" ><img id="card6"></div>
                 <div class="hand col-xs-1" id="hand7" ><img id="card7"></div>
                 <div class="hand col-xs-1" id="hand8" ><img id="card8"></div>
                 <div class="hand col-xs-1" id="hand9" ><img id="card9"></div>
+                <div class="hand col-xs-1" id="hand10" ><img id="card10"></div>
+                <div class="hand col-xs-1" id="hand11" ><img id="card11"></div>
             </div>
         </div>
         <div class="box">

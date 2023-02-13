@@ -132,7 +132,7 @@ class Board:
             resp = resp + '''"''' + c + '''",'''
         resp = resp.rstrip(',')
         resp = resp + '],'
-        resp = '''"counts":['''
+        resp = resp + '''"counts":['''
         for c, num in self.cards.items():
             resp = resp + '''"''' + str(num) + '''",'''
         resp = resp.rstrip(',')

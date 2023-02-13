@@ -40,6 +40,18 @@ class Player:
         for c in self.hand:
             resp = resp + '''"''' + c + '''",'''
         resp = resp.rstrip(',')
+        resp = resp + '],'
+        
+        resp = resp + '''"usedCards":['''
+        for c in self.usedCards:
+            resp = resp + '''"''' + c + '''",'''
+        resp = resp.rstrip(',')
+        resp = resp + '],'
+        
+        resp = resp + '''"discard":['''
+        for c in self.discard:
+            resp = resp + '''"''' + c + '''",'''
+        resp = resp.rstrip(',')
         resp = resp + ']}'
 
         return resp

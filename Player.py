@@ -18,6 +18,8 @@ class Player:
         self.actions=1
         self.buys=1
         self.coins=0
+        
+    def cleanUp(self):
         for c in self.hand:
             self.discard.append(c)
         for u in self.usedCards:

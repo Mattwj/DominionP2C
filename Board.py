@@ -67,6 +67,9 @@ class Board:
         
         self.getPlayer(self.currPlayer).newTurn()
         
+        for p in self.players:
+            p.cleanUp()
+        
         self.pickFromUsableCards()
         
         if len(self.players) == 2 :
@@ -107,6 +110,7 @@ class Board:
             self.usableCards.remove(card)        
     
     def passTurn(self, player):
+        player.cleanUp()
         if self.playerOrder[-1] == player.name:
             self.currPlayer = self.playerOrder[0]
             nextPlayer = self.getPlayer(self.playerOrder[0])

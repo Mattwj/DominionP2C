@@ -20,8 +20,8 @@ class Player:
         self.coins=0
         for c in self.hand:
             self.discard.append(c)
-        for c in self.usedCards:
-            self.discard.append(c)
+        for u in self.usedCards:
+            self.discard.append(u)
         self.hand.clear()
         self.usedCards.clear()   
         self.buyPhaseEffects.clear()
@@ -47,22 +47,22 @@ class Player:
         resp = resp + '],'
         
         resp = resp + '''"usedCards":['''
-        for c in self.usedCards:
-            resp = resp + '''"''' + c + '''",'''
+        for u in self.usedCards:
+            resp = resp + '''"''' + u + '''",'''
         resp = resp.rstrip(',')
         resp = resp + '],'
         
         #REMOVE AFTER TESTING
         resp = resp + '''"deck":['''
-        for c in self.deck:
-            resp = resp + '''"''' + c + '''",'''
+        for d in self.deck:
+            resp = resp + '''"''' + d + '''",'''
         resp = resp.rstrip(',')
         resp = resp + '],'
         #REMOVE AFTER TESTING
         
         resp = resp + '''"discard":['''
-        for c in self.discard:
-            resp = resp + '''"''' + c + '''",'''
+        for dis in self.discard:
+            resp = resp + '''"''' + dis + '''",'''
         resp = resp.rstrip(',')
         resp = resp + ']}'
 
@@ -98,6 +98,7 @@ class Player:
                 return False
             for c in self.discard:
                 self.deck.append(c)
+            self.discard = []
             self.discard.clear()
             random.shuffle(self.deck)
         cardIndex = random.choice(range(0, len(self.deck)))

@@ -65,7 +65,6 @@ def isCoinCard(cardName):
     return cardName in ["Copper", "Silver", "Gold", "Harem"]
 
 def getCardCost(cardName):
-    print("gCC hit")
     if cardName in ["Copper", "Curse"]:
         return 0
     if cardName in ["Moat", "Estate"]:

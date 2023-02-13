@@ -80,7 +80,7 @@ class Player:
     def drawCard(self):
         if len(self.deck) == 0:
             if len(self.discard) == 0:
-                return
+                return False
             for c in self.discard:
                 self.deck.append(c)
             self.discard.clear()

@@ -82,12 +82,6 @@ def ResetGame():
 def IsTurn(playerName = ""):
     return prepareResponse(board.currPlayer == playerName)
 
-@app.route("/BuyCard/<playerName>/<cardName>", methods=["POST"])
-def BuyCard(playerName = "", cardName = ""):
-    player = board.getPlayer(playerName)
-    player.tryBuyCard(cardName)
-    return prepareResponse(player.out())
-
 @app.route("/Endpoints", methods=["GET"])
 def EndpointDocumentation():
     endpointsInfo = ""

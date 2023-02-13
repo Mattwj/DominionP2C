@@ -67,6 +67,7 @@ class Board:
         print(self.currPlayer)
         print(self.getPlayer(self.currPlayer).out())
         self.getPlayer(self.currPlayer).newTurn()
+        print(self.getPlayer(self.currPlayer).out())
         
         self.pickFromUsableCards()
         

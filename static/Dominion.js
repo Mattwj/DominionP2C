@@ -9,7 +9,7 @@ function buyPhase(){
             console.log(data);
         }
     });
-
+    playerHand();
 }
 
 function endTurn(){
@@ -91,7 +91,17 @@ function playerHand(){
         $("#hand"+i).show();
         
     }
-    return hand;
+    
+    var data = JSON.parse(response['data']);
+
+    var actions = data.actions;
+    $("#actions").text(actions);
+    var buys = data.buys;
+    $("#buys").text(buys);
+    var coins = data.coins;
+    $("#coins").text(coins);
+
+    
 }
 
 function boardCards(){

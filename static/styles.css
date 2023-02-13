@@ -157,3 +157,10 @@ header {
   .small{
     padding: 0;
   }
+
+  .resources.col-xs-1{
+    color: black;
+    background-color: #96da67;
+    width:auto;
+    height:auto;
+  }

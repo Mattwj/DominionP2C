@@ -22,6 +22,7 @@ class Player:
             self.discard.append(c)
         for c in self.usedCards:
             self.discard.append(c)
+        self.hand.clear()
         self.usedCards.clear()   
         self.buyPhaseEffects.clear()
         self.newHand()
@@ -49,6 +50,14 @@ class Player:
         resp = resp.rstrip(',')
         resp = resp + '],'
         
+        #REMOVE AFTER TESTING
+        resp = resp + '''"deck":['''
+        for c in self.deck:
+            resp = resp + '''"''' + c + '''",'''
+        resp = resp.rstrip(',')
+        resp = resp + '],'
+        #REMOVE AFTER TESTING
+        
         resp = resp + '''"discard":['''
         for c in self.discard:
             resp = resp + '''"''' + c + '''",'''
@@ -62,9 +71,11 @@ class Player:
         for c in self.hand:
             self.deck.append(c)
         self.hand.clear()
+        
         for c in self.discard:
             self.deck.append(c)
         self.discard.clear()
+        
         for c in self.usedCards:
             self.deck.append(c)
         self.usedCards.clear()

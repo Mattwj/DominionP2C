@@ -145,7 +145,7 @@ class Board:
         return resp
     
     def tryToBuyCard(self, player, cardName):
-        if self.cards[cardName] > 0:
+        if self.cards[cardName] != 0:
             buyattempt = player.tryBuyCard(cardName)
             if buyattempt == True:
                 self.cards[cardName] = self.cards[cardName] - 1

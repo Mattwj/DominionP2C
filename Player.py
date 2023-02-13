@@ -116,8 +116,10 @@ class Player:
     def tryBuyCard(self, cardName):
         cost = getCardCost(cardName)
         if self.coins >= cost:
-            self.DecreaseCoins(cost)
-            self.AddCardToDiscard(cardName)
+            if self.buys > 1:
+                self.DecreaseCoins(cost)
+                self.AddCardToDiscard(cardName)
+                self.DecreaseBuys(1)
             return True
         return False
     
@@ -163,6 +165,9 @@ class Player:
         
     def DecreaseCoins(self, num):
         self.coins = self.coins - num
+        
+    def DecreaseBuys(self, num):
+        self.buys = self.buys - num
 
     def DrawCards(self, num):
         for i in range(0, int(num)):

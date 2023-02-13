@@ -65,6 +65,8 @@ class Board:
         
         self.currPlayer = self.playerOrder[0]
         
+        self.getPlayer(self.currPlayer).newTurn()
+        
         self.pickFromUsableCards()
         
         if len(self.players) == 2 :

@@ -80,6 +80,7 @@ def ResetGame():
 
 @app.route("/IsTurn/<playerName>", methods=["GET"])
 def IsTurn(playerName = ""):
+    print(board.currPlayer)
     return prepareResponse(board.currPlayer == playerName)
 
 @app.route("/Endpoints", methods=["GET"])

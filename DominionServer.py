@@ -51,6 +51,11 @@ def MoveToBuyPhase(playerName = ""):
     player.calculateCoins()
     return prepareResponse(player.out())
 
+@app.route("/BuyCard/<playerName>/<cardName>", methods=["POST"])
+def BuyCard(playerName = "", cardName=""):
+    player = board.getPlayer(playerName)
+    return prepareResponse(board.tryToBuyCard(player, cardName))
+
 @app.route("/GetCards", methods=["GET"])
 def GetCards():
     return prepareResponse(board.getCards())
@@ -94,6 +99,7 @@ def EndpointDocumentation():
     endpointsInfo = endpointsInfo + "/AddPlayer/<PlayerName> : POST - Adds a player to the game - the PlayerName parameter is the name of the player \n"
     endpointsInfo = endpointsInfo + "/GetPlayer/<PlayerName> : GET - Get the player with the given name - the PlayerName parameter is the name of the player \n"
     endpointsInfo = endpointsInfo + "/UseCard/<PlayerName>/<CardName> : POST - Attempts to have the given player used the passed card - the PlayerName parameter is the name of the player, the CardName is the name of the card that is being attempted to be used \n"
+    endpointsInfo = endpointsInfo + "/BuyCard/<PlayerName>/<CardName> : POST - Attempts to have the given player buy the passed card - the PlayerName parameter is the name of the player, the CardName is the name of the card that is being attempted to be bought \n"
     endpointsInfo = endpointsInfo + "/BuyPhase/<PlayerName> : POST - Triggers the buy phase for a player - the PlayerName is the name of the player \n"
     endpointsInfo = endpointsInfo + "/GetCards : GET - Gets the list of the 10 cards being used in the current game - No parameters \n"
     endpointsInfo = endpointsInfo + "/GetCardsWithCounts : GET - Gets the list of all purchasable cards being used in the current game with another list with their respective counts - No parameters \n"

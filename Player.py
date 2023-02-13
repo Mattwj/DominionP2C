@@ -105,6 +105,8 @@ class Player:
         if self.coins >= cost:
             self.DecreaseCoins(cost)
             self.AddCardToDiscard(cardName)
+            return True
+        return False
     
     def calculateCoins(self):
         for c in self.hand:

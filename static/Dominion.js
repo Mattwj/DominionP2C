@@ -14,6 +14,7 @@ function buyPhase(){
 }
 
 function endTurn(){
+    
     var name = $("#playerNameInput").val();
     var response = null;
     $.ajax({
@@ -25,6 +26,31 @@ function endTurn(){
             console.log(data);
         }
     });
+
+    $("#turnoverlay").css("display", "block");
+    var turn = false;
+    var interval = setInterval(function turncheck(){
+        var response = null;
+        var name = $("#playerNameInput").val();
+        $.ajax({
+            url:"http://192.168.0.230/IsTurn/" +name,
+            method:"GET",
+            async: false,
+            success:function(data){
+                response = data;
+                
+            }
+        });
+    
+        var turn = response['data'];
+    
+        if (turn == "True"){
+            clearInterval(interval);
+            $("#turnoverlay").hide();
+        }
+    
+    }
+    ,500);
 
     playerHand();
 
@@ -150,7 +176,6 @@ function boardCards(){
 
 function startGame(){
     $("#startGame").hide();
-    
     var response = null;
     $.ajax({
         url:"http://192.168.0.230/StartGame",
@@ -163,6 +188,32 @@ function startGame(){
     });
     board = boardCards();
     console.log(board);
+
+    $("#turnoverlay").css("display", "block");
+    var turn = false;
+    var interval = setInterval(function turncheck(){
+        var response = null;
+        var name = $("#playerNameInput").val();
+        $.ajax({
+            url:"http://192.168.0.230/IsTurn/" +name,
+            method:"GET",
+            async: false,
+            success:function(data){
+                response = data;
+                
+            }
+        });
+    
+        var turn = response['data'];
+    
+        if (turn == "True"){
+            clearInterval(interval);
+            $("#turnoverlay").hide();
+        }
+    
+    }
+    ,500);
+
 
     playerHand();
 }
@@ -231,6 +282,6 @@ function cardCounts(){
     }
     $(".overlay").show();
 
-    
 
 }
+

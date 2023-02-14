@@ -27,6 +27,14 @@ function endTurn(){
         }
     });
 
+    var endgame = gameover();
+    if (endgame!=false){
+        $("#endgametext").text("endgame");
+        $(".gameendoverlay").show();
+        return;
+    }
+    console.log(endgame);
+
     $("#turnoverlay").css("display", "block");
     var turn = false;
     var interval = setInterval(function turncheck(){
@@ -51,6 +59,14 @@ function endTurn(){
     
     }
     ,500);
+
+    endgame = gameover();
+    if (endgame!=false){
+
+        $("#endgametext").text("endgame");
+        $(".gameendoverlay").show();
+        return;
+    }
 
     playerHand();
 
@@ -285,3 +301,19 @@ function cardCounts(){
 
 }
 
+
+function gameover(){
+    var gover = null;
+    $.ajax({
+        url: "http://192.168.0.230/IsGameOver",
+        method: "GET",
+        async: false,
+        success:function(data){
+            gover = data;
+            
+        }
+    });
+
+    var answer = JSON.parse(gover['data']);
+    return answer;
+}

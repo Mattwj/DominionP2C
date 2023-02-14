@@ -35,6 +35,8 @@ function endTurn(){
     }
     console.log(endgame);
 
+    
+
     $("#turnoverlay").css("display", "block");
     var turn = false;
     var interval = setInterval(function turncheck(){
@@ -49,13 +51,17 @@ function endTurn(){
                 
             }
         });
-    
+        
+        cardCounts();
+
         var turn = response['data'];
     
         if (turn == "True"){
             clearInterval(interval);
             $("#turnoverlay").hide();
         }
+
+        cardCounts();
     
     }
     ,500);
@@ -183,10 +189,10 @@ function boardCards(){
     var statics = $(".static");
     statics.each(function(){
         $(this).attr("onclick","buyCard(this);");
+        $(this).attr("onclick","cardCounts();");
         
     });
 
-    cardCounts();
     
 }
 
@@ -219,6 +225,8 @@ function startGame(){
                 
             }
         });
+
+        cardCounts();
     
         var turn = response['data'];
     
@@ -226,6 +234,8 @@ function startGame(){
             clearInterval(interval);
             $("#turnoverlay").hide();
         }
+
+        cardCounts();
     
     }
     ,500);
@@ -249,6 +259,7 @@ function buyCard(cardimage){
             console.log(data);
         }
     });
+    cardCounts();
     playerHand();
 
 }

@@ -98,10 +98,17 @@ class Board:
             if zCounts > 2:
                 isOver = True
         playerScores = {}
+        playerResponse = ""
         if isOver == True:
             for p in self.players:
                 playerScores[p.name] = p.calculateVictoryPoints()
-        return playerScores
+                
+            playerResponse = "{"
+            for k, v in playerScores:
+                playerResponse = playerResponse + f'''\"{k}\":\"{str(v)}\",'''
+            playerResponse = playerResponse.rstrip(',')
+            playerResponse = playerResponse + '}'
+        return isOver, playerResponse
             
             
             

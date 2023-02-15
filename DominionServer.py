@@ -80,8 +80,8 @@ def ResetGame():
 
 @app.route("/IsGameOver", methods=["GET"])
 def IsGameOver() :
-    result = board.isGameOver()
-    if len(result) > 0:
+    isOver, result = board.isGameOver()
+    if isOver == True:
         return prepareResponse(result)
     return  prepareResponse("false")
 

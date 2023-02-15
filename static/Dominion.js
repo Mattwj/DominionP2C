@@ -14,6 +14,7 @@ function buyPhase(){
 }
 
 function endTurn(){
+    
     var name = $("#playerNameInput").val();
     var response = null;
     $.ajax({
@@ -25,6 +26,53 @@ function endTurn(){
             console.log(data);
         }
     });
+
+    var endgame = gameover();
+    if (endgame!=false){
+        $("#endgametext").text("endgame");
+        $(".gameendoverlay").show();
+        return;
+    }
+    console.log(endgame);
+
+    
+
+    $("#turnoverlay").css("display", "block");
+    var turn = false;
+    var interval = setInterval(function turncheck(){
+        var response = null;
+        var name = $("#playerNameInput").val();
+        $.ajax({
+            url:"http://192.168.0.230/IsTurn/" +name,
+            method:"GET",
+            async: false,
+            success:function(data){
+                response = data;
+                
+            }
+        });
+        
+        cardCounts();
+
+        var turn = response['data'];
+    
+        if (turn == "True"){
+            clearInterval(interval);
+            $("#turnoverlay").hide();
+        }
+
+        cardCounts();
+    
+    }
+    ,500);
+
+    endgame = gameover();
+    if (endgame!=false){
+
+        $("#endgametext").text("endgame");
+        $(".gameendoverlay").show();
+        return;
+    }
 
     playerHand();
 
@@ -141,16 +189,15 @@ function boardCards(){
     var statics = $(".static");
     statics.each(function(){
         $(this).attr("onclick","buyCard(this);");
+        $(this).attr("onclick","cardCounts();");
         
     });
 
-    cardCounts();
     
 }
 
 function startGame(){
     $("#startGame").hide();
-    
     var response = null;
     $.ajax({
         url:"http://192.168.0.230/StartGame",
@@ -163,6 +210,36 @@ function startGame(){
     });
     board = boardCards();
     console.log(board);
+
+    $("#turnoverlay").css("display", "block");
+    var turn = false;
+    var interval = setInterval(function turncheck(){
+        var response = null;
+        var name = $("#playerNameInput").val();
+        $.ajax({
+            url:"http://192.168.0.230/IsTurn/" +name,
+            method:"GET",
+            async: false,
+            success:function(data){
+                response = data;
+                
+            }
+        });
+
+        cardCounts();
+    
+        var turn = response['data'];
+    
+        if (turn == "True"){
+            clearInterval(interval);
+            $("#turnoverlay").hide();
+        }
+
+        cardCounts();
+    
+    }
+    ,500);
+
 
     playerHand();
 }
@@ -182,6 +259,7 @@ function buyCard(cardimage){
             console.log(data);
         }
     });
+    cardCounts();
     playerHand();
 
 }
@@ -231,6 +309,22 @@ function cardCounts(){
     }
     $(".overlay").show();
 
-    
 
+}
+
+
+function gameover(){
+    var gover = null;
+    $.ajax({
+        url: "http://192.168.0.230/IsGameOver",
+        method: "GET",
+        async: false,
+        success:function(data){
+            gover = data;
+            
+        }
+    });
+
+    var answer = JSON.parse(gover['data']);
+    return answer;
 }

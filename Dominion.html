@@ -16,9 +16,10 @@
     <body>
         <header>
             <h1>Dominion</h1>
-            <h2 class=>Player Name: <span id="playerName"><input name="playerName" class="playerName" id="playerNameInput" type="text" /></span>&nbsp;<button id="addPlayer" class="btn2" onclick="addPlayer();">Confirm</button></h2>
+            <h2>Player Name: <span id="playerName"><input name="playerName" class="playerName" id="playerNameInput" type="text" /></span>&nbsp;<button id="addPlayer" class="btn2" onclick="addPlayer();">Confirm</button></h2>
             <button class="btn2 small" id="startGame" onclick="startGame();">Start Game</button>
         </header>
+        <div id="turnoverlay" class="turnoverlay"><span class="overlaytext">Waiting for turn...</span></div>
         <div class="box">
         <div class="board">
 
@@ -91,6 +92,12 @@
             <button class="btn" onclick="buyPhase();">Move to Buy</button>
             <button class="btn" onclick="endTurn();">End Turn</button>
             <button class="btn" onclick="reset();">Reset</button>
+        </div>
+
+        <div class="gameendoverlay">
+            <span class="overlaytext" id="endgametext">
+            -
+            </span>
         </div>
 
     </body>

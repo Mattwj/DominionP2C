@@ -104,7 +104,7 @@ class Board:
                 playerScores[p.name] = p.calculateVictoryPoints()
                 
             playerResponse = "{"
-            for k, v in playerScores:
+            for k, v in playerScores.items():
                 playerResponse = playerResponse + f'''\"{k}\":\"{str(v)}\",'''
             playerResponse = playerResponse.rstrip(',')
             playerResponse = playerResponse + '}'

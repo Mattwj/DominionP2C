@@ -9,6 +9,7 @@ class Player:
     coins=0
     deck=[]
     hand=[]
+    isInBuy = False
     
 
 
@@ -25,6 +26,7 @@ class Player:
         self.hand.clear()
         self.usedCards.clear()   
         self.buyPhaseEffects.clear()
+        self.isInBuy = False
         self.newHand()
 
 
@@ -170,6 +172,10 @@ class Player:
                 
         return total
 
+    def MoveToBuy(self):
+        if self.isInBuy == False :
+            self.calculateCoins()
+            self.isInBuy = True
 
     def AddCardToDeck(self, cardName):
         self.deck.append(cardName)

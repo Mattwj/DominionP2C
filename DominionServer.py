@@ -48,7 +48,7 @@ def UseCard(cardName = "", playerName = ""):
 @app.route("/BuyPhase/<playerName>", methods=["POST"])
 def MoveToBuyPhase(playerName = ""):
     player = board.getPlayer(playerName)
-    player.calculateCoins()
+    player.MoveToBuy()
     return prepareResponse(player.out())
 
 @app.route("/BuyCard/<playerName>/<cardName>", methods=["POST"])
